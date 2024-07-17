@@ -114,3 +114,36 @@ Examples:
 ## Comparing the two 
 ![image](https://github.com/user-attachments/assets/95027df3-ef63-4dfb-a703-c8a1da1c1ffa)
 
+## Choosing a Warehouse vs. a Lake
+
+Use a Data Warehouse when: 
+- You have structured data sources and require fast and complex queries.
+- Data integration from different sources is essential.
+-  Business intelligence and analytics are the primary use cases.
+
+Use a Data Lake when: 
+- You have a mix of structured, semi-structured, or unstructured data.
+- You need a scalable and cost-effective solution to store massive amounts of data.
+- Future needs for data are uncertain, and you want flexibility in storage and processing.
+- Advanced analytics, machine learning, or data discovery are key goals.
+
+Often, organizations use a combination of both, ingesting raw data into a data lake and then processing and moving refined data into a data warehouse for analysis.
+
+## Data Lakehouse
+
+A hybrid data architecture that combines the best features of data lakes and data warehouses, aiming to provide the performance
+, reliability, and capabilities of a data warehouse while maintaining the flexibility, scale, and low-cost storage of data lakes.
+
+Characteristics: 
+- Supports both structured and unstructured data.
+- Allows for schema-on-write and schema-on-read.
+- Provides capabilities for both detailed analytics and machine learning tasks.
+- Typically built on top of cloud or distributed architectures.
+- Benefits from technologies like Delta Lake, which bring ACID transactions to big data.
+
+Examples: 
+- AWS Lake Formation (with S3 and Redshift Spectrum)
+- Delta Lake: An open-source storage layer that brings ACID transactions to Apache Spark and big data workloads.
+- Databricks Lakehouse Platform: A unified platform that combines the capabilities of data lakes and data warehouses.
+- Azure Synapse Analytics: Microsoft's analytics service that brings together big data and data warehousing.
+
