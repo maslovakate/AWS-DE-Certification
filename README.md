@@ -41,8 +41,8 @@ Examples:
 - Email headers (which have a mix of structured fields like date, subject, etc., and unstructured data in the body)
 - Log files with varied format
 
-# Properties of Data (3V)
-## 1. Volume
+## Properties of Data (3V)
+# 1. Volume
 
 Refers to the amount or size of data that organizations are dealing with at any given time.
 
@@ -55,7 +55,7 @@ Examples:
 images, and videos.
 - Retailers collecting years' worth of transaction data, amounting to several petabytes
 
-## 2. Velocity
+# 2. Velocity
 
 Refers to the speed at which new data is generated, collected, and processed.
 
@@ -67,7 +67,7 @@ Examples:
 - Sensor data from IoT devices streaming readings every millisecond (Streaming data aplications)
 - High-frequency trading systems where milliseconds can make a difference in decision-making
 
-## 3. Variety
+# 3. Variety
 
 Refers to the different types, structures, and sources of data.
 
@@ -79,9 +79,9 @@ Examples:
 - A business analyzing data from relational databases (structured), emails (unstructured), and JSON logs (semi-structured).
 - Healthcare systems collecting data from electronic medical records, wearable health devices, and patient feedback forms.
 
-# Data Warehouse vs Data Lake
+## Data Warehouse vs Data Lake
 
-## Data Warehouse 
+# Data Warehouse 
 
 A centralized repository optimized for analysis where data from different sources is stored in a structured format.
 
@@ -96,7 +96,7 @@ Examples:
 - Google BigQuery
 - Microsoft Azure SQL Data Warehous
 
-## Data Lake
+# Data Lake
 
 A storage repository that holds vast amounts of raw data in its native format, including structured, semi-structured, and unstructured data.
 
