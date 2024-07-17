@@ -2,7 +2,7 @@
 # Types of data:
 ## 1. Structured
 
-Definition: Data that is organized in a 
+Data that is organized in a 
 defined manner or schema, typically 
 found in relational databases.
 
@@ -18,7 +18,7 @@ Examples:
   
 ## 2. Unstructured
 
-Definition: Data that doesn't have 
+Data that doesn't have 
 a predefined structure or schema.
 
 Characteristics:
@@ -33,7 +33,7 @@ Examples:
 
 ## 3. Semi-Structured Data
 
-Definition: Data that is not as organized 
+Data that is not as organized 
 as structured data but has some level of 
 structure in the form of tags, hierarchies, 
 or other patterns.
