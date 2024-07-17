@@ -351,5 +351,31 @@ When you need to take data from a big dataset for exploratory data analysis or a
 Systemic: give me every third item for the data sample
 ![image](https://github.com/user-attachments/assets/2e7dc043-1081-43f0-9486-21f7772dadf7)
 
-- Systemic, Cluster, Convenience, 
-Judgmental
+- Systemic, Cluster, Convenience, Judgmental
+
+## Data Skew Mechanisms 
+
+Data skew refers to the unequal distribution or imbalance of data across various nodes or partitions in distributed computing systems.
+
+**Causes:** 
+- Non-uniform distribution of data
+- Inadequate partitioning strategy
+- Temporal skew
+- Important to monitor data distribution and alert when skew issues arise
+
+**Addressing Data Skew**
+
+**1. Adaptive Partitioning:**
+Dynamically adjust partitioning based on data characteristics to ensure a more balanced distribution.
+
+**2. Salting:**
+Introduce a random factor or "salt" to the data to distribute it more uniformly.
+
+**3. Repartitioning:**
+Regularly redistribute the data based on its current distribution characteristics.
+
+**4. Sampling:**
+Use a sample of the data to determine the distribution and adjust the processing strategy accordingly.
+
+**5.Custom Partitioning:**
+Define custom rules or functions for partitioning data based on domain knowledge
