@@ -172,4 +172,19 @@ Transform:
   - Format changes (e.g., date formatting, string manipulation)
   - Aggregations or computations (e.g., calculating totals or averages)
   - Encoding or decoding data
-  - Handling missing value
+  - Handling missing values
+
+Load:
+- Move the transformed data into the target data warehouse or another data repository.
+- Can be done in batches (all at once) or in a streaming manner (as data becomes available).
+- Ensure that data maintains its integrity during the loading phase.
+
+## Managing ETL Pipelines 
+ETL Pipelines must be automated in some reliable way
+- AWS Glue
+- Orchestration services
+  - EventBridge
+  - Amazon Managed Workflows for Apache Airflow [Amazon MWAA]
+  - AWS Step Functions
+  - Lambda
+  - Glue Workflows
