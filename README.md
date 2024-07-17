@@ -1,6 +1,7 @@
 # AWS DEA-C01 certification
 # Types of data:
 1. Structured
+   
 Data that is organized in a 
 defined manner or schema, typically 
 found in relational databases.
