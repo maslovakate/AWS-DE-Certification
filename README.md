@@ -383,32 +383,40 @@ Define custom rules or functions for partitioning data based on domain knowledge
 ## Data Validation and Profiling
 **1. Completeness**
 
-Definition: Ensures all required data is present and no essential parts are missing.
+Ensures all required data is present and no essential parts are missing.
 
-Checks: Missing values, null counts, percentage of populated fields.
+Checks: 
+- Missing values, null counts, percentage of populated fields.
 
-Importance: Missing data can lead to inaccurate analyses and insights.
+Importance: 
+- Missing data can lead to inaccurate analyses and insights.
 
 **2. Consistency**
 
-Definition: Ensures data values are consistent across datasets and do not contradict each other.
+Ensures data values are consistent across datasets and do not contradict each other.
 
-Checks: Cross-field validation, comparing data from different sources or periods.
+Checks: 
+- Cross-field validation, comparing data from different sources or periods.
 
-Importance: Inconsistent data can cause confusion and result in incorrect conclusions.
+Importance: 
+- Inconsistent data can cause confusion and result in incorrect conclusions.
 
 **3. Accuracy**
 
-Definition: Ensures data is correct, reliable, and represents what it is supposed to.
+Ensures data is correct, reliable, and represents what it is supposed to.
 
-Checks: Comparing with trusted sources, validation against known standards or rules.
+Checks: 
+- Comparing with trusted sources, validation against known standards or rules.
 
-Importance: Inaccurate data can lead to false insights and poor decision-making.
+Importance: 
+- Inaccurate data can lead to false insights and poor decision-making.
 
 **4. Integrity**
 
 Ensures data maintains its correctness and consistency over its lifecycle and across systems.
 
-Checks: Referential integrity (e.g., foreign key checks in databases), relationship validations.
+Checks: 
+- Referential integrity (e.g., foreign key checks in databases), relationship validations.
 
-Importance: Ensures relationships between data elements are preserved, and data remains trustworthy over time.
+Importance: 
+- Ensures relationships between data elements are preserved, and data remains trustworthy over time.
