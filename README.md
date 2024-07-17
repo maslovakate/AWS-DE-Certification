@@ -154,3 +154,22 @@ A data mesh is a decentralized data architecture that organizes data by a specif
 it’s more about governance and organization.
 
 Data lakes, warehouses, etc. may be part of a data mesh, but a “data mesh” is more about the “data management paradigm” and not the specific technologies or architectures.
+
+# ETL Pipelines
+
+ETL stands for Extract, Transform, Load. It's a process used to move data from source systems into a data warehouse.
+
+Extract:
+- Retrieve raw data from source systems, which can be databases, CRMs, flat files, APIs, or other data repositories.
+- Ensure data integrity during the extraction phase.
+- Can be done in real-time or in batches, depending on requirements.
+
+Transform:
+- Convert the extracted data into a format suitable for the target data warehouse.
+- Can involve various operations such as:
+  - Data cleansing (e.g., removing duplicates, fixing errors)
+  - Data enrichment (e.g., adding additional data from other sources)
+  - Format changes (e.g., date formatting, string manipulation)
+  - Aggregations or computations (e.g., calculating totals or averages)
+  - Encoding or decoding data
+  - Handling missing value
