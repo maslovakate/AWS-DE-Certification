@@ -255,11 +255,11 @@ Usually found in OLTP systems
 
 **2. Dimensional Model**
 
-1. **Star Schema**
+**1. Star Schema**
   
   This schema consists of a central table, called the fact table, and a number of directly connected other tables, called dimension tables. The fact table contains information about metrics or measures, while the dimension tables contain information about descriptive attributes.
   
-2. **Snowflake Schema**
+**2. Snowflake Schema**
 
   This schema consists of a central fact table, connected to the fact table dimension tables and additional dimension tables connected to the dimension tables.
 
