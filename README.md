@@ -331,3 +331,16 @@ Tool: Glue Schema Registry
 - GZIP, LZOP, BZIP2, ZSTD (Redshift examples)
 - Various tradeoffs between compression & speed
 - Columnar compression
+
+## Data Sampling Techniques
+**1. Random Sampling**
+- Everything has an equal chance
+
+**2. Stratified Sampling**
+- Divide population into homogenous subgroups (strata)
+- Random sample within each stratum
+- Ensures representation of each subgroup
+
+**3. Others**
+- Systemic, Cluster, Convenience, 
+Judgmental
