@@ -249,17 +249,17 @@ When to Use:
 Systems: Hadoop ecosystem, Apache Spark, Apache Hive, Apache Impala, Amazon Redshift Spectrum.
 
 # Data Modeling
-## 1. Relational Model
+**1. Relational Model**
 
 Usually found in OLTP systems
 
-## 2. Dimensional Model
+**2. Dimensional Model**
 
-- **Star Schema**
+1. **Star Schema**
   
   This schema consists of a central table, called the fact table, and a number of directly connected other tables, called dimension tables. The fact table contains information about metrics or measures, while the dimension tables contain information about descriptive attributes.
   
-- **Snowflake Schema**
+2. **Snowflake Schema**
 
   This schema consists of a central fact table, connected to the fact table dimension tables and additional dimension tables connected to the dimension tables.
 
