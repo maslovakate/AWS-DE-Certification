@@ -347,6 +347,7 @@ When you need to take data from a big dataset for exploratory data analysis or a
 - Ensures representation of each subgroup
 
 **3. Others**
+
 Systemic: give me every third item for the data sample
 ![image](https://github.com/user-attachments/assets/2e7dc043-1081-43f0-9486-21f7772dadf7)
 
