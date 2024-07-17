@@ -232,10 +232,11 @@ Systems: Web browsers, many programming languages (like JavaScript, Python, Java
 Binary format that stores both the data and its schema, allowing it to be processed later with different systems without needing the original system's context.
 
 When to Use:
-• With big data and real-time processing systems.
-• When schema evolution (changes in data structure) is needed.
-• Efficient serialization for data transport between systems.
-• Systems: Apache Kafka, Apache Spark, Apache Flink, Hadoop ecosystem.
+- With big data and real-time processing systems.
+- When schema evolution (changes in data structure) is needed.
+- Efficient serialization for data transport between systems.
+
+Systems: Apache Kafka, Apache Spark, Apache Flink, Hadoop ecosystem.
 
 ## 4.Parquet
 Columnar storage format optimized for analytics. Allows for efficient compression and encoding schemes.
@@ -244,4 +245,5 @@ When to Use:
 - Analyzing large datasets with analytics engines.
 - Use cases where reading specific columns instead of entire records is beneficial.
 - Storing data on distributed systems where I/O operations and storage need optimization.
-- Systems: Hadoop ecosystem, Apache Spark, Apache Hive, Apache Impala, Amazon Redshift Spectrum.
+
+Systems: Hadoop ecosystem, Apache Spark, Apache Hive, Apache Impala, Amazon Redshift Spectrum.
