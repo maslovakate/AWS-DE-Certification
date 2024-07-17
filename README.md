@@ -425,5 +425,6 @@ Importance:
 ## Joins
 ![image](https://github.com/user-attachments/assets/fc3a55dd-9b02-4337-ab41-23848a54b4a3)
 ## Regular Expressions
-![image](https://github.com/user-attachments/assets/6714b915-789e-42b5-ab74-8001dbe1d969)
+![image](https://github.com/user-attachments/assets/fa2de5d2-9185-46bb-9cfe-b7a553bbee6a)
+
 
