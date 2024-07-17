@@ -377,5 +377,5 @@ Regularly redistribute the data based on its current distribution characteristic
 **4. Sampling:**
 Use a sample of the data to determine the distribution and adjust the processing strategy accordingly.
 
-**5.Custom Partitioning:**
+**5. Custom Partitioning:**
 Define custom rules or functions for partitioning data based on domain knowledge
