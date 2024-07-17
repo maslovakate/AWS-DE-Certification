@@ -340,6 +340,8 @@ When you need to take data from a big dataset for exploratory data analysis or a
 - Everything has an equal chance
 
 **2. Stratified Sampling**
+![image](https://github.com/user-attachments/assets/a4cc418c-25ec-46ec-83bd-9fd511489cb2)
+
 - Divide population into homogenous subgroups (strata)
 - Random sample within each stratum
 - Ensures representation of each subgroup
