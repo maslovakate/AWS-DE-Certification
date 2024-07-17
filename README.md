@@ -44,7 +44,7 @@ Examples:
 # Properties of Data (3V)
 ## 1. Volume
 
-Refers to the amount or size of data that organizations are dealing with at any given time
+Refers to the amount or size of data that organizations are dealing with at any given time.
 
 Characteristics:
 - May range from gigabytes to petabytes or even more
@@ -57,7 +57,7 @@ images, and videos.
 
 ## 2. Velocity
 
-Refers to the speed at which new data is generated, collected, and processed
+Refers to the speed at which new data is generated, collected, and processed.
 
 Characteristics:
 - High velocity requires real-time or near-real-time processing capabilities
@@ -69,7 +69,7 @@ Examples:
 
 ## 3. Variety
 
-Refers to the different types, structures, and sources of data
+Refers to the different types, structures, and sources of data.
 
 Characteristics:
 - Data can be structured, semi-structured, or unstructured
@@ -78,4 +78,39 @@ Characteristics:
 Examples:
 - A business analyzing data from relational databases (structured), emails (unstructured), and JSON logs (semi-structured).
 - Healthcare systems collecting data from electronic medical records, wearable health devices, and patient feedback forms.
+
+# Data Warehouse vs Data Lake
+
+## Data Warehouse 
+
+A centralized repository optimized for analysis where data from different sources is stored in a structured format.
+
+Characteristics:
+- Designed for complex queries and analysis
+- Data is cleaned, transformed, and loaded (ETL process)
+- Typically uses a star or snowflake schema
+- Optimized for read-heavy operations
+
+Examples:
+- Amazon Redshift
+- Google BigQuery
+- Microsoft Azure SQL Data Warehous
+
+## Data Lake
+
+A storage repository that holds vast amounts of raw data in its native format, including structured, semi-structured, and unstructured data.
+
+Characteristics:
+- Can store large volumes of raw data without predefined schema
+- Data is loaded as-is, no need for preprocessing
+- Supports batch, real-time, and stream processing
+- Can be queried for data transformation or exploration purposes
+
+Examples:
+- Amazon Simple Storage Service (S3) when used as a data lake
+- Azure Data Lake Storage
+- Hadoop Distributed File System (HDFS)
+
+## Comparing the two 
+![image](https://github.com/user-attachments/assets/95027df3-ef63-4dfb-a703-c8a1da1c1ffa)
 
