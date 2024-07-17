@@ -247,3 +247,25 @@ When to Use:
 - Storing data on distributed systems where I/O operations and storage need optimization.
 
 Systems: Hadoop ecosystem, Apache Spark, Apache Hive, Apache Impala, Amazon Redshift Spectrum.
+
+# Data Modeling
+## 1. Relational Model
+
+Usually found in OLTP systems
+
+## 2. Dimensional Model
+
+**- Star Schema**
+  
+  This schema consists of a central table, called the fact table, and a number of directly connected other tables, called dimension tables. The fact table contains information about metrics or measures, while the dimension tables contain information about descriptive attributes.
+  
+**- Snowflake Schema**
+  This schema consists of a central fact table, connected to the fact table dimension tables and additional dimension tables connected to the dimension tables.
+
+**  6 key differences between star schema and snowflake schema:**
+- A star schema has denormalized dimension tables, while a snowflake schema has normalized dimension tables
+- A star schema is easier to design and implement than a snowflake schema
+- A star schema can be more efficient to query than a snowflake schema, because there are fewer JOINs between tables
+- A star schema can require more storage space than a snowflake schema, because of the denormalized data
+- A star schema can be more difficult to update than a snowflake schema, because of the denormalized data
+- A star schema can be more difficult to troubleshoot than a snowflake schema, because of the denormalized data
