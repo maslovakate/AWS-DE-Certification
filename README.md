@@ -117,19 +117,15 @@ Examples:
   - Extract – Transform – Load (ETL)
 - Data Lake: Schema-on-read (schema is defined at the time of reading data)
   - Extract – Load – Transform (ELT)
-
 **Data Types:**
 - Data Warehouse: Primarily structured data
 - Data Lake: Both structured and unstructured data
-
 **Agility:**
 - Data Warehouse: Less agile due to predefined schema
 - Data Lake: More agile as it accepts raw data without a predefined structure
-
 **Processing:** 
 - Data Warehouse: ETL (Extract, Transform, Load)
 - Data Lake: ELT (Extract, Load, Transform) or just Load for storage purposes
-
 **Cost:**
 - Data Warehouse: Typically more expensive because of optimizations for complex queries
 - Data Lake: Cost-effective storage solutions, but costs can rise when processing large amounts of data
