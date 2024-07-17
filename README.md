@@ -333,6 +333,9 @@ Tool: Glue Schema Registry
 - Columnar compression
 
 ## Data Sampling Techniques
+
+When you need to take data from a big dataset for exploratory data analysis or any other analytical purpose.
+
 **1. Random Sampling**
 - Everything has an equal chance
 
