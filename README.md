@@ -238,7 +238,7 @@ When to Use:
 
 Systems: Apache Kafka, Apache Spark, Apache Flink, Hadoop ecosystem.
 
-## 4.Parquet
+## 4. Parquet
 Columnar storage format optimized for analytics. Allows for efficient compression and encoding schemes.
 
 When to Use:
