@@ -1,5 +1,4 @@
-# AWS-DE-Certification
-## AWS DEA-C01 certification prep
+# AWS DEA-C01 certification
 Types of data:
 1. Structured
 2. Unstructured
