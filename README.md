@@ -264,9 +264,9 @@ Usually found in OLTP systems
   This schema consists of a central fact table, connected to the fact table dimension tables and additional dimension tables connected to the dimension tables.
 
 **6 key differences between star schema and snowflake schema:**
-- A star schema has denormalized dimension tables, while a snowflake schema has normalized dimension tables
-- A star schema is easier to design and implement than a snowflake schema
-- A star schema can be more efficient to query than a snowflake schema, because there are fewer JOINs between tables
-- A star schema can require more storage space than a snowflake schema, because of the denormalized data
-- A star schema can be more difficult to update than a snowflake schema, because of the denormalized data
-- A star schema can be more difficult to troubleshoot than a snowflake schema, because of the denormalized data
+1. A star schema has denormalized dimension tables, while a snowflake schema has normalized dimension tables
+2. A star schema is easier to design and implement than a snowflake schema
+3. A star schema can be more efficient to query than a snowflake schema, because there are fewer JOINs between tables
+4. A star schema can require more storage space than a snowflake schema, because of the denormalized data
+5. A star schema can be more difficult to update than a snowflake schema, because of the denormalized data
+6. A star schema can be more difficult to troubleshoot than a snowflake schema, because of the denormalized data
