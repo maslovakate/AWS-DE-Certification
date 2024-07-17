@@ -425,6 +425,4 @@ Importance:
 ## Joins
 ![image](https://github.com/user-attachments/assets/fc3a55dd-9b02-4337-ab41-23848a54b4a3)
 ## Regular Expressions
-![image](https://github.com/user-attachments/assets/2106f1db-5125-4aac-aa01-528623a90098)
-
-
+![image](https://github.com/user-attachments/assets/ad0a585c-6061-4f5e-872a-1b55d8a50214)
