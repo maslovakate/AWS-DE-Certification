@@ -56,10 +56,12 @@ unstructured data in the body)
 
 Refers to the amount or size of data that organizations are dealing with at any 
 given time
-3. Velocity
+
+2. Velocity
 
 Refers to the speed at which new data is generated, collected, and 
 processed
-4. Variety
+
+3. Variety
 
 Refers to the different types, structures, and sources of data
