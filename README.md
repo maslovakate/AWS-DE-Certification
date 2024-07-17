@@ -42,7 +42,7 @@ Examples:
 - Log files with varied format
 
 # Properties of Data (3V)
-1. Volume
+## 1. Volume
 
 Refers to the amount or size of data that organizations are dealing with at any given time
 
@@ -55,7 +55,7 @@ Examples:
 images, and videos.
 - Retailers collecting years' worth of transaction data, amounting to several petabytes
 
-2. Velocity
+## 2. Velocity
 
 Refers to the speed at which new data is generated, collected, and processed
 
@@ -67,7 +67,7 @@ Examples:
 - Sensor data from IoT devices streaming readings every millisecond (Streaming data aplications)
 - High-frequency trading systems where milliseconds can make a difference in decision-making
 
-3. Variety
+## 3. Variety
 
 Refers to the different types, structures, and sources of data
 
