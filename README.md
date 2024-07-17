@@ -315,3 +315,19 @@ Importance:
 
 Tool: Glue Schema Registry
 - Schema discovery, compatibility, validation, registration
+
+## Database Performance Optimization
+**1. Indexing**
+- Avoid full table scans!
+- Enforce data uniqueness and integrity
+
+**2. Partitioning**
+- Reduce amount of data scanned
+- Helps with data lifecycle management
+- Enables parallel processing
+
+**3. Compression**
+- Speed up data transfer, reduce storage & disk reads
+- GZIP, LZOP, BZIP2, ZSTD (Redshift examples)
+- Various tradeoffs between compression & speed
+- Columnar compression
