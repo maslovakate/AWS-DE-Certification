@@ -194,7 +194,7 @@ ETL Pipelines must be automated in some reliable way
 ## 1. JDBC (Java Database Connectivity)
 - Platform-independent
 - Language-dependent
-- 
+
 ## 2. ODBC (Open Database Connectivity)
 - Platform-dependent (thx to drivers)
 - Language-independent
