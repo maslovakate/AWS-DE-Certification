@@ -41,8 +41,8 @@ Examples:
 - Email headers (which have a mix of structured fields like date, subject, etc., and unstructured data in the body)
 - Log files with varied format
 
-## Properties of Data (3V)
-# 1. Volume
+# Properties of Data (3V)
+## 1. Volume
 
 Refers to the amount or size of data that organizations are dealing with at any given time.
 
@@ -55,7 +55,7 @@ Examples:
 images, and videos.
 - Retailers collecting years' worth of transaction data, amounting to several petabytes
 
-# 2. Velocity
+## 2. Velocity
 
 Refers to the speed at which new data is generated, collected, and processed.
 
@@ -67,7 +67,7 @@ Examples:
 - Sensor data from IoT devices streaming readings every millisecond (Streaming data aplications)
 - High-frequency trading systems where milliseconds can make a difference in decision-making
 
-# 3. Variety
+## 3. Variety
 
 Refers to the different types, structures, and sources of data.
 
@@ -79,9 +79,9 @@ Examples:
 - A business analyzing data from relational databases (structured), emails (unstructured), and JSON logs (semi-structured).
 - Healthcare systems collecting data from electronic medical records, wearable health devices, and patient feedback forms.
 
-## Data Warehouse vs Data Lake
+# Data Warehouse vs Data Lake
 
-# Data Warehouse 
+## Data Warehouse 
 
 A centralized repository optimized for analysis where data from different sources is stored in a structured format.
 
@@ -96,7 +96,7 @@ Examples:
 - Google BigQuery
 - Microsoft Azure SQL Data Warehous
 
-# Data Lake
+## Data Lake
 
 A storage repository that holds vast amounts of raw data in its native format, including structured, semi-structured, and unstructured data.
 
@@ -276,17 +276,17 @@ Usually found in OLTP systems
 
 **2. Dimensional Model**
 
-# 1. Star Schema
+## 1. Star Schema
 ![image](https://github.com/user-attachments/assets/aca61b0d-3603-402e-a417-1bbd6e555849)
 
   
   This schema consists of a central table, called the fact table, and a number of directly connected other tables, called dimension tables. The fact table contains information about metrics or measures, while the dimension tables contain information about descriptive attributes.
   
-# 2. Snowflake Schema
+## 2. Snowflake Schema
 ![image](https://github.com/user-attachments/assets/db4ed9e1-3e66-426d-bf18-22fd1666f0e7)
   This schema consists of a central fact table, connected to the fact table dimension tables and additional dimension tables connected to the dimension tables.
 
-# 6 key differences between star schema and snowflake schema:
+## 6 key differences between star schema and snowflake schema:
 1. A star schema has denormalized dimension tables, while a snowflake schema has normalized dimension tables
 2. A star schema is easier to design and implement than a snowflake schema
 3. A star schema can be more efficient to query than a snowflake schema, because there are fewer JOINs between tables
@@ -294,7 +294,7 @@ Usually found in OLTP systems
 5. A star schema can be more difficult to update than a snowflake schema, because of the denormalized data
 6. A star schema can be more difficult to troubleshoot than a snowflake schema, because of the denormalized data
 
-## Data Lineage
+# Data Lineage
 ![image](https://github.com/user-attachments/assets/ebe19641-825d-4b17-bdd6-b6f2c9d686d2)
 
 A visual representation that traces the flow and transformation of data through its lifecycle, from its source to its final destination.
@@ -304,7 +304,7 @@ A visual representation that traces the flow and transformation of data through 
 - Ensures compliance with regulations
 - Provides a clear understanding of how data is moved, transformed, and consumed within systems
 
-## Schema Evolution 
+# Schema Evolution 
 
 The ability to adapt and change the schema of a dataset over time without disrupting existing processes or systems.
 
@@ -316,44 +316,44 @@ Importance:
 Tool: Glue Schema Registry
 - Schema discovery, compatibility, validation, registration
 
-## Database Performance Optimization
-# 1. Indexing
+# Database Performance Optimization
+## 1. Indexing
 - Avoid full table scans!
 - Enforce data uniqueness and integrity
 
-# 2. Partitioning
+## 2. Partitioning
 - Reduce amount of data scanned
 - Helps with data lifecycle management
 - Enables parallel processing
 
-# 3. Compression
+## 3. Compression
 - Speed up data transfer, reduce storage & disk reads
 - GZIP, LZOP, BZIP2, ZSTD (Redshift examples)
 - Various tradeoffs between compression & speed
 - Columnar compression
 
-## Data Sampling Techniques
+# Data Sampling Techniques
 
 When you need to take data from a big dataset for exploratory data analysis or any other analytical purpose.
 
-# 1. Random Sampling
+## 1. Random Sampling
 - Everything has an equal chance
 
-# 2. Stratified Sampling
+## 2. Stratified Sampling
 ![image](https://github.com/user-attachments/assets/a4cc418c-25ec-46ec-83bd-9fd511489cb2)
 
 - Divide population into homogenous subgroups (strata)
 - Random sample within each stratum
 - Ensures representation of each subgroup
 
-# 3. Others
+## 3. Others
 
 Systemic: give me every third item for the data sample
 ![image](https://github.com/user-attachments/assets/2e7dc043-1081-43f0-9486-21f7772dadf7)
 
 - Systemic, Cluster, Convenience, Judgmental
 
-## Data Skew Mechanisms 
+# Data Skew Mechanisms 
 
 Data skew refers to the unequal distribution or imbalance of data across various nodes or partitions in distributed computing systems.
 
@@ -363,7 +363,7 @@ Data skew refers to the unequal distribution or imbalance of data across various
 - Temporal skew
 - Important to monitor data distribution and alert when skew issues arise
 
-# Addressing Data Skew
+## Addressing Data Skew
 
 **1. Adaptive Partitioning:**
 Dynamically adjust partitioning based on data characteristics to ensure a more balanced distribution.
@@ -380,8 +380,8 @@ Use a sample of the data to determine the distribution and adjust the processing
 **5. Custom Partitioning:**
 Define custom rules or functions for partitioning data based on domain knowledge
 
-## Data Validation and Profiling
-# 1. Completeness
+# Data Validation and Profiling
+## 1. Completeness
 Ensures all required data is present and no essential parts are missing.
 
 Checks: 
@@ -390,7 +390,7 @@ Checks:
 Importance: 
 - Missing data can lead to inaccurate analyses and insights.
 
-# 2. Consistency
+## 2. Consistency
 Ensures data values are consistent across datasets and do not contradict each other.
 
 Checks: 
@@ -399,7 +399,7 @@ Checks:
 Importance: 
 - Inconsistent data can cause confusion and result in incorrect conclusions.
 
-# 3. Accuracy*
+## 3. Accuracy
 Ensures data is correct, reliable, and represents what it is supposed to.
 
 Checks: 
@@ -408,7 +408,7 @@ Checks:
 Importance: 
 - Inaccurate data can lead to false insights and poor decision-making.
 
-# 4. Integrity
+## 4. Integrity
 Ensures data maintains its correctness and consistency over its lifecycle and across systems.
 
 Checks: 
@@ -417,8 +417,8 @@ Checks:
 Importance: 
 - Ensures relationships between data elements are preserved, and data remains trustworthy over time.
 
-## SQL 
-## Joins
+# SQL 
+# Joins
 ![image](https://github.com/user-attachments/assets/fc3a55dd-9b02-4337-ab41-23848a54b4a3)
-## Regular Expressions
+# Regular Expressions
 ![image](https://github.com/user-attachments/assets/ad0a585c-6061-4f5e-872a-1b55d8a50214)
