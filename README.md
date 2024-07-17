@@ -276,17 +276,17 @@ Usually found in OLTP systems
 
 **2. Dimensional Model**
 
-   **1. Star Schema**
+# 1. Star Schema
 ![image](https://github.com/user-attachments/assets/aca61b0d-3603-402e-a417-1bbd6e555849)
 
   
   This schema consists of a central table, called the fact table, and a number of directly connected other tables, called dimension tables. The fact table contains information about metrics or measures, while the dimension tables contain information about descriptive attributes.
   
-   **2. Snowflake Schema**
+# 2. Snowflake Schema
 ![image](https://github.com/user-attachments/assets/db4ed9e1-3e66-426d-bf18-22fd1666f0e7)
   This schema consists of a central fact table, connected to the fact table dimension tables and additional dimension tables connected to the dimension tables.
 
-  **6 key differences between star schema and snowflake schema:**
+# 6 key differences between star schema and snowflake schema:
 1. A star schema has denormalized dimension tables, while a snowflake schema has normalized dimension tables
 2. A star schema is easier to design and implement than a snowflake schema
 3. A star schema can be more efficient to query than a snowflake schema, because there are fewer JOINs between tables
@@ -317,16 +317,16 @@ Tool: Glue Schema Registry
 - Schema discovery, compatibility, validation, registration
 
 ## Database Performance Optimization
-**1. Indexing**
+# 1. Indexing
 - Avoid full table scans!
 - Enforce data uniqueness and integrity
 
-**2. Partitioning**
+# 2. Partitioning
 - Reduce amount of data scanned
 - Helps with data lifecycle management
 - Enables parallel processing
 
-**3. Compression**
+# 3. Compression
 - Speed up data transfer, reduce storage & disk reads
 - GZIP, LZOP, BZIP2, ZSTD (Redshift examples)
 - Various tradeoffs between compression & speed
@@ -336,17 +336,17 @@ Tool: Glue Schema Registry
 
 When you need to take data from a big dataset for exploratory data analysis or any other analytical purpose.
 
-**1. Random Sampling**
+# 1. Random Sampling
 - Everything has an equal chance
 
-**2. Stratified Sampling**
+# 2. Stratified Sampling
 ![image](https://github.com/user-attachments/assets/a4cc418c-25ec-46ec-83bd-9fd511489cb2)
 
 - Divide population into homogenous subgroups (strata)
 - Random sample within each stratum
 - Ensures representation of each subgroup
 
-**3. Others**
+# 3. Others
 
 Systemic: give me every third item for the data sample
 ![image](https://github.com/user-attachments/assets/2e7dc043-1081-43f0-9486-21f7772dadf7)
@@ -363,7 +363,7 @@ Data skew refers to the unequal distribution or imbalance of data across various
 - Temporal skew
 - Important to monitor data distribution and alert when skew issues arise
 
-**Addressing Data Skew**
+# Addressing Data Skew
 
 **1. Adaptive Partitioning:**
 Dynamically adjust partitioning based on data characteristics to ensure a more balanced distribution.
@@ -381,8 +381,7 @@ Use a sample of the data to determine the distribution and adjust the processing
 Define custom rules or functions for partitioning data based on domain knowledge
 
 ## Data Validation and Profiling
-**1. Completeness**
-
+# 1. Completeness
 Ensures all required data is present and no essential parts are missing.
 
 Checks: 
@@ -391,8 +390,7 @@ Checks:
 Importance: 
 - Missing data can lead to inaccurate analyses and insights.
 
-**2. Consistency**
-
+# 2. Consistency
 Ensures data values are consistent across datasets and do not contradict each other.
 
 Checks: 
@@ -401,8 +399,7 @@ Checks:
 Importance: 
 - Inconsistent data can cause confusion and result in incorrect conclusions.
 
-**3. Accuracy**
-
+# 3. Accuracy*
 Ensures data is correct, reliable, and represents what it is supposed to.
 
 Checks: 
@@ -411,8 +408,7 @@ Checks:
 Importance: 
 - Inaccurate data can lead to false insights and poor decision-making.
 
-**4. Integrity**
-
+# 4. Integrity
 Ensures data maintains its correctness and consistency over its lifecycle and across systems.
 
 Checks: 
