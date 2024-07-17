@@ -312,5 +312,6 @@ Importance:
 - Ensures data systems can adapt to changing business requirements
 - Allows for the addition, removal, or modification of columns/fields in a dataset
 - Maintains backward compatibility with older data records
-- Glue Schema Registry
+
+Tool: Glue Schema Registry
 - Schema discovery, compatibility, validation, registration
