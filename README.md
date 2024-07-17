@@ -1,6 +1,6 @@
 # AWS DEA-C01 certification
 # Types of data:
-1. Structured
+## 1. Structured
 
 Definition: Data that is organized in a 
 defined manner or schema, typically 
@@ -16,7 +16,7 @@ Examples:
 - CSV files with consistent columns
 - Excel spreadsheet
   
-2. Unstructured
+## 2. Unstructured
 
 Definition: Data that doesn't have 
 a predefined structure or schema.
@@ -31,7 +31,7 @@ Examples:
 - Images
 - Emails and word processing documents
 
-3. Semi-Structured Data
+## 3. Semi-Structured Data
 
 Definition: Data that is not as organized 
 as structured data but has some level of 
@@ -50,3 +50,16 @@ Examples:
 structured fields like date, subject, etc., and 
 unstructured data in the body)
 - Log files with varied format
+
+# Properties of Data (3V)
+1. Volume
+
+Refers to the amount or size of data that organizations are dealing with at any 
+given time
+3. Velocity
+
+Refers to the speed at which new data is generated, collected, and 
+processed
+4. Variety
+
+Refers to the different types, structures, and sources of data
