@@ -255,15 +255,15 @@ Usually found in OLTP systems
 
 **2. Dimensional Model**
 
-  **1. Star Schema**
+   **1. Star Schema**
   
   This schema consists of a central table, called the fact table, and a number of directly connected other tables, called dimension tables. The fact table contains information about metrics or measures, while the dimension tables contain information about descriptive attributes.
   
-  **2. Snowflake Schema**
+   **2. Snowflake Schema**
 
   This schema consists of a central fact table, connected to the fact table dimension tables and additional dimension tables connected to the dimension tables.
 
-**6 key differences between star schema and snowflake schema:**
+  **6 key differences between star schema and snowflake schema:**
 1. A star schema has denormalized dimension tables, while a snowflake schema has normalized dimension tables
 2. A star schema is easier to design and implement than a snowflake schema
 3. A star schema can be more efficient to query than a snowflake schema, because there are fewer JOINs between tables
