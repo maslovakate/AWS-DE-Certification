@@ -1,5 +1,15 @@
 # AWS DEA-C01 certification
 # Types of data:
 1. Structured
-2. Unstructured
-3. Semi-structured 
+
+Data that is organized in a 
+defined manner or schema, typically 
+found in relational databases.
+
+Characteristics: 
+ • Easily queryable 
+ • Organized in rows and columns 
+ • Has a consistent structure 
+
+3. Unstructured
+4. Semi-structured 
