@@ -256,11 +256,13 @@ Usually found in OLTP systems
 **2. Dimensional Model**
 
    **1. Star Schema**
+![image](https://github.com/user-attachments/assets/aca61b0d-3603-402e-a417-1bbd6e555849)
+
   
   This schema consists of a central table, called the fact table, and a number of directly connected other tables, called dimension tables. The fact table contains information about metrics or measures, while the dimension tables contain information about descriptive attributes.
   
    **2. Snowflake Schema**
-
+![image](https://github.com/user-attachments/assets/db4ed9e1-3e66-426d-bf18-22fd1666f0e7)
   This schema consists of a central fact table, connected to the fact table dimension tables and additional dimension tables connected to the dimension tables.
 
   **6 key differences between star schema and snowflake schema:**
@@ -270,3 +272,12 @@ Usually found in OLTP systems
 4. A star schema can require more storage space than a snowflake schema, because of the denormalized data
 5. A star schema can be more difficult to update than a snowflake schema, because of the denormalized data
 6. A star schema can be more difficult to troubleshoot than a snowflake schema, because of the denormalized data
+
+## Data Lineage
+
+A visual representation that traces the flow and transformation of data through its lifecycle, from its source to its final destination.
+
+**Importance:** 
+- Helps in tracking errors back to their source
+- Ensures compliance with regulations
+- Provides a clear understanding of how data is moved, transformed, and consumed within systems
