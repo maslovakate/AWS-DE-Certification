@@ -148,6 +148,9 @@ Examples:
 - Azure Synapse Analytics: Microsoft's analytics service that brings together big data and data warehousing.
 
 # Data Mesh
+
 A data mesh is a decentralized data architecture that organizes data by a specific business domain—for example, marketing, sales, customer service and more—to provide more ownership to the producers of a given data set.
+
 it’s more about governance and organization.
+
 Data lakes, warehouses, etc. may be part of a data mesh, but a “data mesh” is more about the “data management paradigm” and not the specific technologies or architectures.
