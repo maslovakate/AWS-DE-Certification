@@ -420,3 +420,10 @@ Checks:
 
 Importance: 
 - Ensures relationships between data elements are preserved, and data remains trustworthy over time.
+
+## SQL 
+## Joins
+![image](https://github.com/user-attachments/assets/fc3a55dd-9b02-4337-ab41-23848a54b4a3)
+## Regular Expressions
+![image](https://github.com/user-attachments/assets/6714b915-789e-42b5-ab74-8001dbe1d969)
+
