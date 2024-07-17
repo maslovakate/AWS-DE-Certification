@@ -7,9 +7,9 @@ defined manner or schema, typically
 found in relational databases.
 
 Characteristics: 
- • Easily queryable 
- • Organized in rows and columns 
- • Has a consistent structure 
+- Easily queryable
+- Organized in rows and columns
+- Has a consistent structure 
 
 3. Unstructured
 4. Semi-structured 
