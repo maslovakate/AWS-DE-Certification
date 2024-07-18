@@ -485,11 +485,12 @@ Importance:
 - git gc: Clean up and optimize the local repository.
 - git reflog: Record when refs were updated in the local repository, useful for recovering lost commits.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Storage
-## Storing, accessing, and backing up data in AWS
+**Storing, accessing, and backing up data in AWS**
+
 # Amazon S3
 Amazon S3 is ”infinitely scaling” storage
-
 ## Amazon S3 Use cases:
 - Backup and storage
 - Disaster Recovery
