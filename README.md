@@ -434,3 +434,53 @@ Importance:
     () The parentheses
     [] The square brackets
     {} The curly brackets
+    
+# Common git commands
+## Setting Up and Configuration:
+- git init: Initialize a new Git repository.
+- git config: Set configuration values for user info, aliases, and more.
+  -- git config --global user.name "Your Name": Set your name.
+  -- git config --global user.email "your@email.com": Set your email.
+
+## Basic Commands:
+- git clone <repository>: Clone (or download) a repository from an existing URL.
+- git status: Check the status of your changes in the working directory.
+- git add <filename>: Add changes in the file to the staging area.
+  -- git add .: Add all new and changed files to the staging area.
+- git commit -m "Commit message here": Commit the staged changes with a message.
+- git log: View commit logs.
+
+## Branching with git
+- git branch: List all local branches.
+  -- git branch <branchname>: Create a new branch.
+- git checkout <branchname>: Switch to a specific branch.
+  -- git checkout -b <branchname>: Create a new branch and switch to it.
+- git merge <branchname>: Merge the specified branch into the current branch.
+- git branch -d <branchname>: Delete a branch.
+
+## Remote repositories
+- git remote add <name> <url>: Add a remote repository.
+- git remote: List all remote repositories.
+- git push <remote> <branch>: Push a branch to a remote repository.
+- git pull <remote> <branch>: Pull changes from a remote repository branch into the current local branch.
+
+## Undoing changes
+- git reset: Reset your staging area to match the most recent commit, without affecting the working directory.
+- git reset --hard: Reset the staging area and the working directory to match the most recent commit.
+- git revert <commit>: Create a new commit that undoes all of the changes from a previous commit.
+
+## Advanced git
+- git stash: Temporarily save changes that are not yet ready for a commit.
+- git stash pop: Restore the most recently stashed changes.
+- git rebase <branch>: Reapply changes from one branch onto another, often used to integrate changes from one branch into another.
+- git cherry-pick <commit>: Apply changes from a specific commit to the current branch.
+
+## Git collaboration and inspection
+- git blame <file>: Show who made changes to a file and when.
+- git diff: Show changes between commits, commit and working tree, etc.
+- git fetch: Fetch changes from a remote repository without merging them.
+
+## Git maintenance and data recovery
+- git fsck: Check the database for errors.
+- git gc: Clean up and optimize the local repository.
+- git reflog: Record when refs were updated in the local repository, useful for recovering lost commits.
