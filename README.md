@@ -424,13 +424,13 @@ Importance:
 ![image](https://github.com/user-attachments/assets/ad0a585c-6061-4f5e-872a-1b55d8a50214)
 
 # Sign names in english cheat sheet:
-~ The tilde 
-! The exclamation mark
-^ The caret
-| The pipe
-\ The backslash
-- The dash
-'' The single quotes
-() The parentheses
-[] The square brackets
-{} The curly brackets
+  ~ The tilde 
+  ! The exclamation mark
+  ^ The caret
+  | The pipe
+  \ The backslash
+  - The dash
+  '' The single quotes
+  () The parentheses
+  [] The square brackets
+  {} The curly brackets
