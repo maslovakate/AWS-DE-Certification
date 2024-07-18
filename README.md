@@ -435,7 +435,7 @@ Importance:
     [] The square brackets
     {} The curly brackets
     
-# Common git commands
+# Git commands
 ## Setting Up and Configuration:
 - git init: Initialize a new Git repository.
 - git config: Set configuration values for user info, aliases, and more.
