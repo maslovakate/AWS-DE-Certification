@@ -535,7 +535,7 @@ Amazon S3 is ”infinitely scaling” storage
 
 ## Amazon S3 - Versioning
 - You can version your files in Amazon S3
-- It is enabled at the bucket level
+- It is enabled at the **bucket level**
 - Same key overwrite will change the “version”: 1, 2, 3…
 - It is best practice to version your buckets
   -- Protect against unintended deletes (ability to restore a version)
@@ -552,5 +552,5 @@ Amazon S3 is ”infinitely scaling” storage
 - Copying is asynchronous
 - Must give proper IAM permissions to S3
 - Use cases:
-  -- **CRR** compliance, lower latency access, replication across accounts
-  -- **SRR** log aggregation, live replication between production and test accounts
+  -- CRR - compliance, lower latency access, replication across accounts
+  -- SRR - log aggregation, live replication between production and test accounts
