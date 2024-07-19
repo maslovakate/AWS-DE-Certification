@@ -552,5 +552,5 @@ Amazon S3 is ”infinitely scaling” storage
 - Copying is asynchronous
 - Must give proper IAM permissions to S3
 - Use cases:
-  -- **CRR** – compliance, lower latency access, replication across accounts
-  -- **SRR** – log aggregation, live replication between production and test accounts
+  -- **CRR** compliance, lower latency access, replication across accounts
+  -- **SRR** log aggregation, live replication between production and test accounts
