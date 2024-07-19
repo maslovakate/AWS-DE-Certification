@@ -635,3 +635,7 @@ Amazon S3 is ”infinitely scaling” storage
 
 ## S3 Storage Classes Comparison
 ![image](https://github.com/user-attachments/assets/731023bd-f5fe-463d-9ab3-0c56bfe32dfd)
+
+## S3 Storage Classes – Price Comparison
+Example: us-east-1
+![image](https://github.com/user-attachments/assets/637a5a19-4b7c-44e7-bd6d-333abaa0deab)
