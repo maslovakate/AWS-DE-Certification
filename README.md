@@ -664,4 +664,8 @@ A rule in your company states that you should be able to recover your deleted S3
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## S3 Event Notifications
 S3:ObjectCreated, S3:ObjectRemoved, S3:ObjectRestore, S3:Replication…
-![image](https://github.com/user-attachments/assets/80742660-f73e-414c-add5-9adac526e4a0)
+## S3 Event Notifications with Amazon EventBridge
+![image](https://github.com/user-attachments/assets/24e1e838-e487-44fd-9682-8c92d3880164)
+- Advanced filtering options with JSON rules (metadata, object size, name...)
+- Multiple Destinations – ex Step Functions, Kinesis Streams / Firehose…
+- EventBridge Capabilities – Archive, Replay Events, Reliable delivery
