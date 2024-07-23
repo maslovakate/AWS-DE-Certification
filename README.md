@@ -661,11 +661,101 @@ A rule in your company states that you should be able to recover your deleted S3
 - Enable S3 Versioning in order to have object versions, so that “deleted objects” are in fact hidden by a “delete marker” and can be recovered
 - Transition the “noncurrent versions” of the object to Standard IA
 - Transition afterwards the “noncurrent versions” to Glacier Deep Archive
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ## S3 Event Notifications
 S3:ObjectCreated, S3:ObjectRemoved, S3:ObjectRestore, S3:Replication…
+
 ## S3 Event Notifications with Amazon EventBridge
 ![image](https://github.com/user-attachments/assets/24e1e838-e487-44fd-9682-8c92d3880164)
 - Advanced filtering options with JSON rules (metadata, object size, name...)
 - Multiple Destinations – ex Step Functions, Kinesis Streams / Firehose…
 - EventBridge Capabilities – Archive, Replay Events, Reliable delivery
+
+## S3 – Baseline Performance
+- Amazon S3 automatically scales to high request rates, latency 100-200 ms
+- Your application can achieve at least 3,500 PUT/COPY/POST/DELETE or 5,500 GET/HEAD requests per second per prefix in a bucket. 
+- There are no limits to the number of prefixes in a bucket. 
+- Example (object path => prefix):
+  - bucket/folder1/sub1/file => /folder1/sub1/
+  - bucket/folder1/sub2/file => /folder1/sub2/
+  - bucket/1/file => /1/
+  - bucket/2/file => /2/
+- If you spread reads across all four prefixes evenly, you can achieve 22,000 requests per second for GET and HEAD
+
+## S3 Performance
+- Multi-Part upload: 
+  - recommended for files > 100MB, must use for files > 5GB
+  - Can help parallelize uploads (speed up transfers)
+- **S3 Transfer Acceleration **
+  - Increase transfer speed by transferring file to an AWS edge location which will forward the data to the S3 bucket in the target region
+  - Compatible with multi-part upload
+
+## S3 Performance – S3 Byte-Range Fetches
+![image](https://github.com/user-attachments/assets/617cfccd-dcca-4305-81bf-2afc7647606b)
+
+## S3 Select & Glacier Select
+- Retrieve less data using SQL by performing server-side filtering
+- Can filter by rows & columns (simple SQL statements)
+- Less network transfer, less CPU cost client-side
+![image](https://github.com/user-attachments/assets/28e1398f-37c4-4b1f-9d03-5d764483fd19)
+
+## Amazon S3 – Object Encryption
+You can encrypt objects in S3 buckets using one of 4 methods
+- Server-Side Encryption (SSE)
+  - Server-Side Encryption with Amazon S3-Managed Keys **(SSE-S3)** – Enabled by Default. Encrypts S3 objects using keys handled, managed, and owned by AWS
+  - Server-Side Encryption with KMS Keys stored in AWS KMS **(SSE-KMS)**. Leverage AWS Key Management Service (AWS KMS) to manage encryption keys
+  - Server-Side Encryption with Customer-Provided Keys **(SSE-C)** 
+- Client-Side Encryption. When you want to manage your own encryption keys
+
+## Amazon S3 Encryption – SSE-S3
+- Encryption using keys handled, managed, and owned by AWS
+- Object is encrypted server-side
+- Encryption type is AES-256
+- Must set header **"x-amz-server-side-encryption": "AES256"**
+- **Enabled by default for new buckets & new objects**
+
+## Amazon S3 Encryption – SSE-KMS
+- Encryption using keys handled and managed by AWS KMS (Key Management Service)
+- KMS advantages: user control + audit key usage using CloudTrail
+- Object is encrypted server side
+- Must set header **"x-amz-server-side-encryption": "aws:kms"**
+
+## SSE-KMS Limitation
+- If you use SSE-KMS, you may be impacted by the KMS limits 
+- When you upload, it calls the GenerateDataKey KMS API
+- When you download, it calls the Decrypt KMS API
+- Count towards the KMS quota per second (5500, 10000, 30000 req/s based on region)
+- You can request a quota increase using the Service Quotas Console
+
+## Amazon S3 Encryption – SSE-C
+- Server-Side Encryption using keys fully managed by the customer outside of AWS
+- Amazon S3 does NOT store the encryption key you provide
+- HTTPS must be used
+- Encryption key must provided in HTTP headers, for every HTTP request made
+
+## Amazon S3 Encryption – Client-Side Encryption
+- Use client libraries such as Amazon S3 Client-Side Encryption Library
+- Clients must encrypt data themselves before sending to Amazon S3
+- Clients must decrypt data themselves when retrieving from Amazon S3
+- Customer fully manages the keys and encryption cycle
+
+## S3 – Access Points
+![image](https://github.com/user-attachments/assets/9ffb7206-7b12-4fe8-bf61-9906a78b2469)
+
+## S3 Object Lambda
+- Use AWS Lambda Functions to change the object before it is retrieved by the caller application
+-  Only one S3 bucket is needed, on top of which we create S3 Access Point and S3 Object Lambda Access Points. 
+- Use Cases:
+  - Redacting personally identifiable information for analytics or nonproduction environments.
+  - Converting across data formats, such as converting XML to JSON.
+- Resizing and watermarking images on the fly using callerspecific details, such as the user who requested the object.
+![image](https://github.com/user-attachments/assets/025be4ff-deb3-4d9d-81e9-020da2a37300)
+
+# EC2 Instance Storage Section
+## What’s an EBS Volume?
+An EBS (Elastic Block Store) Volume is a network drive you can attach to your instances while they run.
+- It allows your instances to persist data, even after their termination
+- They can only be mounted to one instance at a time (at the CCP level)
+- They are bound to a specific availability zone
+- Analogy: Think of them as a “network USB stick” 
+- Free tier: 30 GB of free EBS storage of type General Purpose (SSD) or Magnetic per month
