@@ -777,4 +777,38 @@ An EBS (Elastic Block Store) Volume is a network drive you can attach to your in
 - Increase volume size. (You can only increase, not decrease);
 - Change volume type. (Gp2 -> Gp3);
 - Specify desired IOPS or throughput performance (or it will guess);
-- Adjust performance. (Increase or decrease)
+- Adjust performance. (Increase or decrease).
+
+## Amazon EFS – Elastic File System
+- Managed NFS (network file system) that can be mounted on many EC2;
+- EFS works with EC2 instances in multi-AZ;
+- Highly available, scalable, expensive (3x gp2), pay per use.
+![image](https://github.com/user-attachments/assets/6a324f78-de91-48a4-a4ac-cdbf182b352b)
+
+## Amazon EFS – Elastic File System
+Use cases: 
+- content management;
+- web serving;
+- data sharing;
+- wordpress.
+
+- Uses NFSv4.1 protocol;
+- Uses security group to control access to EFS;
+- **Compatible with Linux based AMI (not Windows)**;
+- Encryption at rest using KMS;
+- POSIX file system (~Linux) that has a standard file API;
+- File system scales automatically, pay-per-use, no capacity planning.
+
+## EFS – Performance & Storage Classes
+- EFS Scale:
+  - 1000s of concurrent NFS clients, 10 GB+ /s throughput;
+  - Grow to Petabyte-scale network file system, automatically;
+- Performance Mode (set at EFS creation time):
+  - General Purpose (default) – latency-sensitive use cases (web server, CMS, etc…);
+  - Max I/O – higher latency, throughput, highly parallel (big data, media processing);
+- Throughput Mode:
+  - Bursting – 1 TB = 50MiB/s + burst of up to 100MiB/s;
+  - Provisioned – set your throughput regardless of storage size, ex: 1 GiB/s for 1 TB storage;
+  - Elastic – automatically scales throughput up or down based on your workloads:
+    - Up to 3GiB/s for reads and 1GiB/s for writes
+    - Used for unpredictable workload
