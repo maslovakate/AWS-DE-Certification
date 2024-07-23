@@ -810,5 +810,16 @@ Use cases:
   - Bursting – 1 TB = 50MiB/s + burst of up to 100MiB/s;
   - Provisioned – set your throughput regardless of storage size, ex: 1 GiB/s for 1 TB storage;
   - Elastic – automatically scales throughput up or down based on your workloads:
-    - Up to 3GiB/s for reads and 1GiB/s for writes
-    - Used for unpredictable workload
+    - Up to 3GiB/s for reads and 1GiB/s for writes;
+    - Used for unpredictable workloads.
+
+## EFS – Storage Classes
+- Storage Tiers (lifecycle management feature – move file after N days);
+- Standard: for frequently accessed files;
+- Infrequent access (EFS-IA): cost to retrieve files, lower price to store;
+- Archive: rarely accessed data (few times each year), 50% cheaper;
+- Implement lifecycle policies to move files between storage tiers;
+- Availability and durability;
+- Standard: Multi-AZ, great for prod;
+- One Zone: One AZ, great for dev, backup enabled by default, compatible with IA (EFS One Zone-IA);
+- Over 90% in cost savings.
