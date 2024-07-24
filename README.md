@@ -895,5 +895,5 @@ NoSQL Serverless Database.
 - All the data that is needed for a query is present in one row;
 - NoSQL databases don’t perform aggregations such as “SUM”, “AVG”, …;
 - NoSQL databases scale horizontally;
-- There’s no “right or wrong” for NoSQL vs SQL, they just require to model the data differently and think about user queries differently.
+  - There’s no “right or wrong” for NoSQL vs SQL, they just require to model the data differently and think about user queries differently.
 
