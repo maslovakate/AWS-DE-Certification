@@ -920,12 +920,12 @@ NoSQL Serverless Database.
   - Set Types – String Set, Number Set, Binary Set.
  
 ## DynamoDB – Primary Keys 
-- Option 1: Partition Key **(HASH)**
+- **Option 1**: Partition Key **(HASH)**
   - Partition key must be unique for each item;
   - Partition key must be “diverse” so that the data is distributed;
 Example: “User_ID” for a users table
 ![image](https://github.com/user-attachments/assets/c0f061b5-2dce-41af-8d5a-c84c77123e9a)
-- Option 2: Partition Key + Sort Key **(HASH + RANGE)**
+- **Option 2**: Partition Key + Sort Key **(HASH + RANGE)**
   - The combination must be unique for each item;
   - Data is grouped by partition key.
 Example: users-games table, “User_ID” for Partition Key and “Game_ID” for Sort Key.
