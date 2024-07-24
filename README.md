@@ -872,3 +872,28 @@ Use cases:
   - Inadvertent or malicious delete operations;
   - Updates that shorten or alter retention periods;
   - Even the root user cannot delete backups when enabled.
+
+# Database
+Managing and querying structured and semi-structured data.
+
+## Amazon DynamoDB
+NoSQL Serverless Database.
+
+## Traditional Architecture
+![image](https://github.com/user-attachments/assets/107366d5-ccdd-47ef-9387-ac22a72a46d4)
+- Traditional applications leverage RDBMS databases;
+- These databases have the SQL query language;
+- Strong requirements about how the data should be modeled;
+- Ability to do query joins, aggregations, complex computations;
+- Vertical scaling (getting a more powerful CPU / RAM / IO);
+- Horizontal scaling (increasing reading capability by adding EC2 / RDS Read Replicas.
+
+## NoSQL databases
+- NoSQL databases are non-relational databases and are distributed;
+- NoSQL databases include MongoDB, DynamoDB, …;
+- NoSQL databases do not support query joins (or just limited support);
+- All the data that is needed for a query is present in one row;
+- NoSQL databases don’t perform aggregations such as “SUM”, “AVG”, …;
+- NoSQL databases scale horizontally;
+- There’s no “right or wrong” for NoSQL vs SQL, they just require to model the data differently and think about user queries differently.
+
