@@ -897,3 +897,36 @@ NoSQL Serverless Database.
 - NoSQL databases scale horizontally;
   - There’s no “right or wrong” for NoSQL vs SQL, they just require to model the data differently and think about user queries differently.
 
+## Amazon DynamoDB 
+- Fully managed, highly available with replication across multiple AZs;
+- NoSQL database - not a relational database;
+- Scales to massive workloads, distributed database;
+- Millions of requests per seconds, trillions of row, 100s of TB of storage;
+- Fast and consistent in performance (low latency on retrieval);
+- Integrated with IAM for security, authorization and administration;
+- Enables event driven programming with DynamoDB Streams;
+- Low cost and auto-scaling capabilities;
+- Standard & Infrequent Access (IA) Table Clas.
+
+## DynamoDB - Basics
+- DynamoDB is made of Tables;
+- Each table has a Primary Key (must be decided at creation time);
+- Each table can have an infinite number of items (= rows);
+- Each item has attributes (can be added over time – can be null);
+- Maximum size of an item is 400KB.
+- Data types supported are:
+  - Scalar Types: String, Number, Binary, Boolean, Null;
+  - Document Types: List, Map;
+  - Set Types – String Set, Number Set, Binary Set.
+ 
+## DynamoDB – Primary Keys 
+- Option 1: Partition Key **(HASH)**
+  - Partition key must be unique for each item;
+  - Partition key must be “diverse” so that the data is distributed;
+Example: “User_ID” for a users table
+![image](https://github.com/user-attachments/assets/c0f061b5-2dce-41af-8d5a-c84c77123e9a)
+- Option 2: Partition Key + Sort Key **(HASH + RANGE)**
+  - The combination must be unique for each item;
+  - Data is grouped by partition key.
+Example: users-games table, “User_ID” for Partition Key and “Game_ID” for Sort Key.
+![image](https://github.com/user-attachments/assets/81f62e11-eef5-4648-a65b-0699c8db5d75)
