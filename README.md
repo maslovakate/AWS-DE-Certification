@@ -1124,3 +1124,10 @@ SQL-compatible query language for DynamoDB
         From Orders
         Where OrderId in [1, 2, 3]
         Order by OrderId;
+
+## DynamoDB – Local Secondary Index (LSI)
+- **Alternative Sort Key** for your table (same Partition Key as that of base table)
+- The Sort Key consists of one scalar attribute (String, Number, or Binary)
+- Up to 5 Local Secondary Indexes per table
+- **Must be defined at table creation time**
+- **Attribute Projections** – can contain some or all the attributes of the base table (KEYS_ONLY, INCLUDE, ALL)
