@@ -1016,3 +1016,95 @@ To compute the number of partitions:
 ![image](https://github.com/user-attachments/assets/018ae4ac-abf3-41f9-9b88-c238dd7e8d4e)
 
 **WCUs and RCUs are spread evenly across partitions**.
+
+## DynamoDB – Throttling
+**If we exceed provisioned RCUs or WCUs, we get “ProvisionedThroughputExceededException”**
+- **Reasons**:
+  - Hot Keys – one partition key is being read too many times (e.g., popular item);
+  - Hot Partitions;
+  - Very large items, remember RCU and WCU depends on size of items.
+- **Solutions**:
+  - Exponential backoff when exception is encountered (already in SDK);
+  - Distribute partition keys as much as possible;
+  - If RCU issue, we can use **DynamoDB Accelerator (DAX)**.
+
+## R/W Capacity Modes – On-Demand
+- Read/writes automatically scale up/down with your workloads;
+- No capacity planning needed (WCU / RCU);
+- Unlimited WCU & RCU, no throttle, more expensive;
+- You’re charged for reads/writes that you use in terms of RRU and WRU;
+- Read Request Units (RRU) – throughput for reads (same as RCU);
+- Write Request Units (WRU) – throughput for writes (same as WCU);
+- 2.5x more expensive than provisioned capacity (use with care).
+
+**Use cases: unknown workloads, unpredictable application traffic**
+
+## DynamoDB – Writing Data
+1. PutItem
+  - Creates a new item or fully replace an old item (same Primary Key);
+  - Consumes WCUs.
+2. UpdateItem
+  - Edits an existing item’s attributes or adds a new item if it doesn’t exist;
+  - Can be used to implement Atomic Counters – a numeric attribute that’s unconditionally incremented.
+3. Conditional Writes
+  - Accept a write/update/delete only if conditions are met, otherwise returns an error;
+  - Helps with concurrent access to items;
+  - No performance impact.
+
+## DynamoDB – Reading Data
+**GetItem**
+  - Read based on Primary key;
+  - Primary Key can be **HASH** or **HASH + RANGE**;
+  - Eventually Consistent Read (default);
+  - Option to use Strongly Consistent Reads (more RCU - might take longer);
+  - **ProjectionExpression** can be specified to retrieve only certain attributes.
+
+## DynamoDB – Reading Data (Query)
+- **Query** returns items based on:
+  - **KeyConditionExpression**;
+    - **Partition Key value** (must be = operator) – required;
+    - **Sort Key value** (=, <, <=, >, >=, Between, Begins with) – optional.
+  - **FilterExpression**
+    - Additional filtering after the Query operation (before data returned to you);
+    - Use only with non-key attributes (does not allow HASH or RANGE attributes).
+- Returns:
+  - The number of items specified in Limit;
+  - Or up to 1 MB of data.
+- Ability to do pagination on the results
+- Can query table, a Local Secondary Index, or a Global Secondary Index.
+
+## DynamoDB – Reading Data (Scan)
+- Scan the entire table and then filter out data (inefficient);
+- Returns up to 1 MB of data – use pagination to keep on reading;
+- Consumes a lot of RCU;
+- Limit impact using Limit or reduce the size of the result and pause;
+- For faster performance, use **Parallel Scan**:
+  - Multiple workers scan multiple data segments at the same time;
+  - Increases the throughput and RCU consumed;
+  - Limit the impact of parallel scans just like you would for Scans.
+- Can use ProjectionExpression & FilterExpression (no changes to RCU).
+
+## DynamoDB – Deleting Data
+- DeleteItem;
+- Delete an individual item;
+- Ability to perform a conditional delete;
+- DeleteTable;
+- Delete a whole table and all its items;
+- Much quicker deletion than calling DeleteItem on all items.
+
+## DynamoDB – Batch Operations
+- Allows you to save in latency by reducing the number of API calls;
+- Operations are done in parallel for better efficiency;
+- Part of a batch can fail; in which case we need to try again for the failed items.
+
+**1. BatchWriteItem**
+  - Up to 25 PutItem and/or DeleteItem in one call
+  - Up to 16 MB of data written, up to 400 KB of data per item
+  - Can’t update items (use UpdateItem)
+  - **UnprocessedItems** for failed write operations (exponential backoff or add WCU)
+
+**2. BatchGetItem**
+  - Return items from one or more tables;
+  - Up to 100 items, up to 16 MB of data;
+  - Items are retrieved in parallel to minimize latency;
+  - UnprocessedKeys for failed read operations (exponential backoff or add RCU).
