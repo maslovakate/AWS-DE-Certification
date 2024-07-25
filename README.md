@@ -944,6 +944,7 @@ Example: users-games table, “User_ID” for Partition Key and “Game_ID” fo
 - Metadata storage for Amazon S3 objects 
 - E-commerce shopping carts 
 - Web session management 
+
 **Anti Pattern**:
 - Prewritten application tied to a traditional relational database: use RDS instead
 - Joins or complex transactions 
