@@ -1108,3 +1108,19 @@ To compute the number of partitions:
   - Up to 100 items, up to 16 MB of data;
   - Items are retrieved in parallel to minimize latency;
   - UnprocessedKeys for failed read operations (exponential backoff or add RCU).
+
+## DynamoDB – PartiQL
+SQL-compatible query language for DynamoDB
+- Allows you to select, insert, update, and delete data in DynamoDB using SQL;
+- Run queries across multiple DynamoDB tables;
+- Run PartiQL queries from:
+  - AWS Management Console;
+  - NoSQL Workbench for DynamoDB;
+  - DynamoDB APIs;
+  - AWS CLI;
+  - AWS SDK.
+
+      Select OrderId, Total
+      From Orders
+      Where OrderId in [1, 2, 3]
+      Order by OrderId;
