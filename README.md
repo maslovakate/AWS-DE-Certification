@@ -933,31 +933,80 @@ Example: users-games table, “User_ID” for Partition Key and “Game_ID” fo
 
 ## DynamoDB in Big Data
 **Common use cases include**: 
-- Mobile apps 
-- Gaming 
-- Digital ad serving 
-- Live voting 
-- Audience interaction for live events 
-- Sensor networks 
-- Log ingestion 
-- Access control for web-based content 
-- Metadata storage for Amazon S3 objects 
-- E-commerce shopping carts 
-- Web session management 
+- Mobile apps; 
+- Gaming;
+- Digital ad serving;
+- Live voting;
+- Audience interaction for live events;
+- Sensor networks;
+- Log ingestion;
+- Access control for web-based content;
+- Metadata storage for Amazon S3 objects;
+- E-commerce shopping carts;
+- Web session management.
 
 **Anti Pattern**:
-- Prewritten application tied to a traditional relational database: use RDS instead
-- Joins or complex transactions 
-- Binary Large Object (BLOB) data: store data in S3 & metadata in DynamoDB
-- Large data with low I/O rate: use S3 instead
+- Prewritten application tied to a traditional relational database: use RDS instead;
+- Joins or complex transactions ;
+- Binary Large Object (BLOB) data: store data in S3 & metadata in DynamoDB;
+- Large data with low I/O rate: use S3 instead.
 
 ## DynamoDB – Read/Write Capacity Modes
 Control how you manage your table’s capacity (read/write throughput)
 1. Provisioned Mode (default)
-- You specify the number of reads/writes per second
-- You need to plan capacity beforehand
-- Pay for provisioned read & write capacity units
+- You specify the number of reads/writes per second;
+- You need to plan capacity beforehand;
+- Pay for provisioned read & write capacity units.
 2. On-Demand Mode
-- Read/writes automatically scale up/down with your workloads
-- No capacity planning needed
-- Pay for what you use, more expensive ($$$)
+- Read/writes automatically scale up/down with your workloads;
+- No capacity planning needed;
+- Pay for what you use, more expensive ($$$).
+
+You can switch between different modes once every 24 hours.
+
+## R/W Capacity Modes – Provisioned
+- Table must have provisioned read and write capacity units;
+- Read Capacity Units **(RCU)** – throughput for reads;
+- Write Capacity Units **(WCU)** – throughput for writes;
+- Option to setup auto-scaling of throughput to meet demand;
+- Throughput can be exceeded temporarily using “Burst Capacity”;
+- If Burst Capacity has been consumed, you’ll get a “ProvisionedThroughputExceededException”;
+- It’s then advised to do an exponential backoff retry.
+
+## DynamoDB – Write Capacity Units (WCU)
+- One Write Capacity Unit (WCU) represents **one write per second for an item up to 1 KB in size**
+- If the items are larger than 1 KB, more WCUs are consumed
+
+- **Example 1**: we write 10 items per second, with item size 2 KB;
+        10 ∗ (2 𝐾𝐵 / 1 𝐾𝐵) = 20 𝑊𝐶𝑈𝑠
+- **Example 2**: we write 6 items per second, with item size 4.5 KB;
+        6 ∗ (5 𝐾𝐵 / 1 𝐾𝐵) = 30 𝑊𝐶𝑈𝑠 (4.5 gets rounded to the upper KB)
+- **Example 3**: we write 120 items per minute, with item size 2 KB.
+        120 / 60 ∗ (2 𝐾𝐵 / 1 𝐾𝐵) = 4 𝑊𝐶𝑈𝑠
+
+## Strongly Consistent Read vs. Eventually Consistent Read
+1. Eventually Consistent Read (default)
+- If we read just after a write, it’s possible we’ll get some stale data because of replication
+2. Strongly Consistent Read
+- If we read just after a write, we will get the correct data;
+- Set “ConsistentRead” parameter to True in API calls (GetItem, BatchGetItem, Query, Scan);
+- Consumes twice the RCU.
+
+## DynamoDB – Read Capacity Units (RCU)
+One Read Capacity Unit (RCU) represents one Strongly Consistent Read per second, or two Eventually Consistent Reads per second, for an item up to 4 KB in size.
+If the items are larger than 4 KB, more RCUs are consumed.
+- **Example 1**: 10 Strongly Consistent Reads per second, with item size 4 KB;
+        10 ∗ (4 𝐾𝐵 / 4 𝐾𝐵) = 10 𝑅𝐶𝑈𝑠
+- **Example 2**: 16 Eventually Consistent Reads per second, with item size 12 KB;
+        16 / 2 ∗ (12 𝐾𝐵 / 4 𝐾𝐵) = 24 𝑅𝐶𝑈𝑠
+- **Example 3**: 10 Strongly Consistent Reads per second, with item size 6 KB.
+        10 ∗ (8 𝐾𝐵 / 4 𝐾𝐵) = 20 𝑅𝐶𝑈𝑠 (we must round up 6 KB to 8 KB)
+
+## DynamoDB – Partitions Internal
+- Data is stored in partitions;
+- Partition Keys go through a hashing algorithm to know to which partition they go to.
+
+To compute the number of partitions:
+![image](https://github.com/user-attachments/assets/018ae4ac-abf3-41f9-9b88-c238dd7e8d4e)
+
+**WCUs and RCUs are spread evenly across partitions**.
