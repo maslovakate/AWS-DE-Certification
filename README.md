@@ -1040,13 +1040,13 @@ To compute the number of partitions:
 **Use cases: unknown workloads, unpredictable application traffic**
 
 ## DynamoDB – Writing Data
-1. PutItem
+**1. PutItem**
   - Creates a new item or fully replace an old item (same Primary Key);
   - Consumes WCUs.
-2. UpdateItem
+**2. UpdateItem**
   - Edits an existing item’s attributes or adds a new item if it doesn’t exist;
   - Can be used to implement Atomic Counters – a numeric attribute that’s unconditionally incremented.
-3. Conditional Writes
+**3. Conditional Writes**
   - Accept a write/update/delete only if conditions are met, otherwise returns an error;
   - Helps with concurrent access to items;
   - No performance impact.
