@@ -1119,7 +1119,6 @@ SQL-compatible query language for DynamoDB
   - DynamoDB APIs;
   - AWS CLI;
   - AWS SDK.
-
       Select OrderId, Total
       From Orders
       Where OrderId in [1, 2, 3]
