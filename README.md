@@ -996,10 +996,13 @@ You can switch between different modes once every 24 hours.
 One Read Capacity Unit (RCU) represents one Strongly Consistent Read per second, or two Eventually Consistent Reads per second, for an item up to 4 KB in size.
 If the items are larger than 4 KB, more RCUs are consumed.
 - **Example 1**: 10 Strongly Consistent Reads per second, with item size 4 KB;
+
         10 ∗ (4 𝐾𝐵 / 4 𝐾𝐵) = 10 𝑅𝐶𝑈𝑠
 - **Example 2**: 16 Eventually Consistent Reads per second, with item size 12 KB;
+
         16 / 2 ∗ (12 𝐾𝐵 / 4 𝐾𝐵) = 24 𝑅𝐶𝑈𝑠
 - **Example 3**: 10 Strongly Consistent Reads per second, with item size 6 KB.
+
         10 ∗ (8 𝐾𝐵 / 4 𝐾𝐵) = 20 𝑅𝐶𝑈𝑠 (we must round up 6 KB to 8 KB)
 
 ## DynamoDB – Partitions Internal
