@@ -1085,12 +1085,12 @@ To compute the number of partitions:
 - Can use ProjectionExpression & FilterExpression (no changes to RCU).
 
 ## DynamoDB – Deleting Data
-- DeleteItem;
-- Delete an individual item;
-- Ability to perform a conditional delete;
-- DeleteTable;
-- Delete a whole table and all its items;
-- Much quicker deletion than calling DeleteItem on all items.
+**1. DeleteItem**
+  - Delete an individual item;
+  - Ability to perform a conditional delete.
+**2. DeleteTable**
+  - Delete a whole table and all its items;
+  - Much quicker deletion than calling DeleteItem on all items.
 
 ## DynamoDB – Batch Operations
 - Allows you to save in latency by reducing the number of API calls;
