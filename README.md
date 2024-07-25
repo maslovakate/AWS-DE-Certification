@@ -978,10 +978,13 @@ You can switch between different modes once every 24 hours.
 - If the items are larger than 1 KB, more WCUs are consumed
 
 - **Example 1**: we write 10 items per second, with item size 2 KB;
+
         10 ∗ (2 𝐾𝐵 / 1 𝐾𝐵) = 20 𝑊𝐶𝑈𝑠
 - **Example 2**: we write 6 items per second, with item size 4.5 KB;
+
         6 ∗ (5 𝐾𝐵 / 1 𝐾𝐵) = 30 𝑊𝐶𝑈𝑠 (4.5 gets rounded to the upper KB)
 - **Example 3**: we write 120 items per minute, with item size 2 KB.
+
         120 / 60 ∗ (2 𝐾𝐵 / 1 𝐾𝐵) = 4 𝑊𝐶𝑈𝑠
 
 ## Strongly Consistent Read vs. Eventually Consistent Read
