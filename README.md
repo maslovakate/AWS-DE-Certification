@@ -950,3 +950,14 @@ Example: users-games table, “User_ID” for Partition Key and “Game_ID” fo
 - Joins or complex transactions 
 - Binary Large Object (BLOB) data: store data in S3 & metadata in DynamoDB
 - Large data with low I/O rate: use S3 instead
+
+## DynamoDB – Read/Write Capacity Modes
+Control how you manage your table’s capacity (read/write throughput)
+1. Provisioned Mode (default)
+- You specify the number of reads/writes per second
+- You need to plan capacity beforehand
+- Pay for provisioned read & write capacity units
+2. On-Demand Mode
+- Read/writes automatically scale up/down with your workloads
+- No capacity planning needed
+- Pay for what you use, more expensive ($$$)
