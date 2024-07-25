@@ -930,3 +930,22 @@ Example: “User_ID” for a users table
   - Data is grouped by partition key.
 Example: users-games table, “User_ID” for Partition Key and “Game_ID” for Sort Key.
 ![image](https://github.com/user-attachments/assets/81f62e11-eef5-4648-a65b-0699c8db5d75)
+
+## DynamoDB in Big Data
+**Common use cases include**: 
+- Mobile apps 
+- Gaming 
+- Digital ad serving 
+- Live voting 
+- Audience interaction for live events 
+- Sensor networks 
+- Log ingestion 
+- Access control for web-based content 
+- Metadata storage for Amazon S3 objects 
+- E-commerce shopping carts 
+- Web session management 
+**Anti Pattern**:
+- Prewritten application tied to a traditional relational database: use RDS instead
+- Joins or complex transactions 
+- Binary Large Object (BLOB) data: store data in S3 & metadata in DynamoDB
+- Large data with low I/O rate: use S3 instead
