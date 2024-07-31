@@ -175,6 +175,43 @@ it’s more about governance and organization.
 
 Data lakes, warehouses, etc. may be part of a data mesh, but a “data mesh” is more about the “data management paradigm” and not the specific technologies or architectures.
 
+# DWH Designing 
+## Characteristics of a Data Warehouse
+![image](https://github.com/user-attachments/assets/e54df4ab-bf3e-436e-acb5-0d97ec431bd4)
+  - **Subject-Oriented**: A data warehouse uses a theme, and delivers information about a specific subject instead of a company’s current operations. In other words, the data warehousing process is more equipped to handle a specific theme. Examples of themes or subjects include sales, distributions, marketing, etc.
+  - **Integrated**: Integration is defined as establishing a connection between large amount of data from multiple databases or sources. However, it is also essential for the data to be stored in the data warehouse in a unified manner. The process of data warehousing integrates data from multiple sources, such as a mainframe, relational databases, flat files, etc. Furthermore, it helps maintain consistent codes, attribute measures, naming conventions, and, formats.
+  - **Time-variant**: Time-variant in a DW is more extensive as compared to other operating systems. Data stored in a data warehouse is recalled with a specific time period and provides information from a historical perspective.
+  - **Non-volatile**: In the non-volatile data warehouse, data is permanent i.e. when new data is inserted, previous data is not replaced, omitted, or deleted. In this data warehouse, data is read-only and only refreshes at certain intervals.  The two data operations performed in the data warehouse are data access and data loading.
+
+## Functions of a Data Warehouse
+  - Data Extraction;
+  - Data Cleaning;
+  - Data Transformation;
+  - Data Integration;
+  - Data Loading;
+  - Data Mapping;
+  - Refreshing.
+## Normalization vs. Denormalization Approach
+Normalization is defined as a way of data re-organization. This helps meet two main requirements in an EDW: 
+  - eliminating data redundancy;
+  - protecting data dependency.
+On the other hand, denormalization increases the functionality of the database system’s infrastructure.
+
+## Database vs Data Warehouse
+|Database  |  Data Warehouse |
+| ------------- | ------------- |
+| A database is an amalgamation of related data | Data warehouse serves as an information system that contains historical and commutative data from one or several sources|
+| A database is used for recording data  | A data warehouse is used for analyzing data  |
+| A database is an application-oriented collection of data | Data warehouse is the subject-oriented collection of data |
+| A database uses **Online Transactional Processing (OLTP)** | Data warehouse uses **Online Analytical Processing (OLAP)** |
+| Database tables and joins are normalized, therefore, more complicated | Data warehouse tables and joins are denormalized, hence simpler |
+| ER modeling techniques are used for designing | Data modeling techniques are used for designing |
+
+## Ralph Kimball vs Bill Inmon 
+![image](https://github.com/user-attachments/assets/42304ffa-83d7-4312-b70c-42760b7e0b03)
+![image](https://github.com/user-attachments/assets/18a58fee-59b6-4289-9c65-9f951ba9bdf0)
+Kimball model does not have the integration layer. Data moves directly from the source system(s) to the data marts. So there is no **ODS**(operational data store)/Stage/Landing layer in Kimball;
+
 # ETL Pipelines
 
 ETL stands for Extract, Transform, Load. It's a process used to move data from source systems into a data warehouse.
@@ -263,10 +300,12 @@ Columnar storage format optimized for analytics. Allows for efficient compressio
 
 When to Use:
 - Analyzing large datasets with analytics engines;
-- - Use cases where reading specific columns instead of entire records is beneficial;
+- Use cases where reading specific columns instead of entire records is beneficial;
 - Storing data on distributed systems where I/O operations and storage need optimization.
 
 Systems: Hadoop ecosystem, Apache Spark, Apache Hive, Apache Impala, Amazon Redshift Spectrum.
+
+# Kimball vs Inmon DWH 
 
 # Data Modeling
 **1. Relational Model**
