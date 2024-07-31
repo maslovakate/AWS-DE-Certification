@@ -205,7 +205,7 @@ On the other hand, denormalization increases the functionality of the database s
 | A database is an application-oriented collection of data | Data warehouse is the subject-oriented collection of data |
 | A database uses **Online Transactional Processing (OLTP)** | Data warehouse uses **Online Analytical Processing (OLAP)** |
 | Database tables and joins are normalized, therefore, more complicated | Data warehouse tables and joins are denormalized, hence simpler |
-| ER modeling techniques are used for designing | Data modeling techniques are used for designing |
+| **Entity relationship (ER)** modeling techniques are used for designing | Data modeling techniques are used for designing |
 
 ## Ralph Kimball vs Bill Inmon 
 ![image](https://github.com/user-attachments/assets/42304ffa-83d7-4312-b70c-42760b7e0b03)
