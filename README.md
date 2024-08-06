@@ -1204,3 +1204,29 @@ SQL-compatible query language for DynamoDB
 
 ## DynamoDB Accelerator (DAX) vs. ElastiCache
 ![image](https://github.com/user-attachments/assets/e0e892d2-ac00-4630-9404-4f2df63cf2e2)
+
+## DynamoDB Streams
+- Ordered stream of item-level modifications (create/update/delete) in a table
+- Stream records can be:
+  - Sent to Kinesis Data Streams
+  - Read by AWS Lambda
+  - Read by Kinesis Client Library applications
+- Data Retention for up to 24 hours
+- Use cases:
+  - react to changes in real-time (welcome email to users)
+  - Analytics
+  - Insert into derivative tables
+  - Insert into OpenSearch Service
+  - Implement cross-region replicatio
+![image](https://github.com/user-attachments/assets/24029356-c6ed-4ae9-b25d-7ebeafa2a115)
+Ability to choose the information that will be written to the stream:
+- KEYS_ONLY – only the key attributes of the modified item
+- NEW_IMAGE – the entire item, as it appears after it was modified
+- OLD_IMAGE – the entire item, as it appeared before it was modified
+- NEW_AND_OLD_IMAGES – both the new and the old images of the item
+DynamoDB Streams are made of shards, just like Kinesis Data Streams. You don’t provision shards, this is automated by AWS.
+
+## DynamoDB Streams & AWS Lambda
+- You need to define an Event Source Mapping to read from a DynamoDB Streams;
+- You need to ensure the Lambda function has the appropriate permissions;
+- Your Lambda function is invoked synchronously.
