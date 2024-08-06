@@ -1192,3 +1192,15 @@ SQL-compatible query language for DynamoDB
 - Uses the WCUs and RCUs of the main table;
 - No special throttling consideration.
 
+## DynamoDB Accelerator (DAX)
+- Fully-managed, highly available, seamless inmemory cache for DynamoDB
+- Microseconds latency for cached reads & queries
+- Doesn’t require application logic modification (compatible with existing DynamoDB APIs)
+- Solves the “Hot Key” problem (too many reads)
+- 5 minutes TTL for cache (default)
+- Up to 10 nodes in the cluster
+- Multi-AZ (3 nodes minimum recommended for production)
+- Secure (Encryption at rest with KMS, VPC, IAM, CloudTrail, …)
+
+## DynamoDB Accelerator (DAX) vs. ElastiCache
+![image](https://github.com/user-attachments/assets/e0e892d2-ac00-4630-9404-4f2df63cf2e2)
