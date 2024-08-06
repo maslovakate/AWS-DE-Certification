@@ -1159,14 +1159,36 @@ SQL-compatible query language for DynamoDB
   - AWS CLI;
   - AWS SDK.
   
-        Select OrderId, Total
-        From Orders
-        Where OrderId in [1, 2, 3]
-        Order by OrderId;
+  Use a SQL-like syntax to manipulate DynamoDB tables
+1. Supports some (but not all) statements:
+  - INSERT
+  - UPDATE
+  - SELECT
+  - DELETE
+2. It supports Batch operations.
 
 ## DynamoDB – Local Secondary Index (LSI)
-- **Alternative Sort Key** for your table (same Partition Key as that of base table)
-- The Sort Key consists of one scalar attribute (String, Number, or Binary)
-- Up to 5 Local Secondary Indexes per table
-- **Must be defined at table creation time**
-- **Attribute Projections** – can contain some or all the attributes of the base table (KEYS_ONLY, INCLUDE, ALL)
+- **Alternative Sort Key** for your table (same Partition Key as that of base table);
+- The Sort Key consists of one scalar attribute (String, Number, or Binary);
+- Up to 5 Local Secondary Indexes per table;
+- **Must be defined at table creation time**;
+- **Attribute Projections** – can contain some or all the attributes of the base table (KEYS_ONLY, INCLUDE, ALL).
+  ![image](https://github.com/user-attachments/assets/3e08280f-540b-46c9-a42d-13d355d62898)
+
+## DynamoDB – Global Secondary Index (GSI)
+- Alternative Primary Key (HASH or HASH+RANGE) from the base table;
+- Speed up queries on non-key attributes;
+- The Index Key consists of scalar attributes (String, Number, or Binary);
+- Attribute Projections – some or all the attributes of the base table (KEYS_ONLY, INCLUDE, ALL);
+- Must provision RCUs & WCUs for the index;
+- Can be added/modified after table creation.
+
+## DynamoDB – Indexes and Throttling
+1. Global Secondary Index (GSI):
+- If the writes are throttled on the GSI, then the main table will be throttled! Even if the WCU on the main tables are fine.
+- Choose your GSI partition key carefully!
+- Assign your WCU capacity carefully!
+2. Local Secondary Index (LSI):
+- Uses the WCUs and RCUs of the main table;
+- No special throttling consideration.
+
