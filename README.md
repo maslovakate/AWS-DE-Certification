@@ -1271,3 +1271,32 @@ DynamoDB Streams are made of shards, just like Kinesis Data Streams. You don’t
 - Attributes – limit specific attributes the user can see.
 ![image](https://github.com/user-attachments/assets/89d6beca-9afd-45a5-93ce-94e6e2e299f4)
 
+# Amazon RDS
+Relational Database Service
+## What is RDS?
+- Hosted relational database
+  - Amazon Aurora
+  - MySQL
+  - PostgreSQL
+  - MariaDB (Open Source MySQL)
+  - Oracle
+  - SQL Server
+- Not for “big data”
+- Might appear on exam as an example of what not to use
+- Or in the context of migrating from RDS to Redshift etc;
+
+## Amazon Aurora
+- MySQL and PostgreSQL – compatible;
+- Up to 5X faster than MySQL, 3X faster than PostgreSQL;
+- 1/10 the cost of commercial databases;
+- Up to 128TB per database volume;
+- Up to 15 read replicas;
+- Continuous backup to S3;
+- Replication across regions and availability zones;
+- Automatic scaling with Aurora Serverless.
+
+## Aurora Security 
+- VPC network isolation
+- At-rest with KMS
+- Data, backup, snapshots, and replicas can be encrypted
+- In-transit with SSL
