@@ -1230,3 +1230,18 @@ DynamoDB Streams are made of shards, just like Kinesis Data Streams. You don’t
 - You need to define an Event Source Mapping to read from a DynamoDB Streams;
 - You need to ensure the Lambda function has the appropriate permissions;
 - Your Lambda function is invoked synchronously.
+
+## DynamoDB – Time To Live (TTL)
+1. Automatically delete items after an expiry timestamp
+2. Doesn’t consume any WCUs (i.e., no extra cost)
+3. The TTL attribute must be a “Number” data type with “Unix Epoch timestamp” value
+4. Expired items deleted within 48 hours of expiration
+5. Expired items, that haven’t been deleted, appears in reads/queries/scans (if you don’t want them, filter them out)
+6. Expired items are deleted from both LSIs and GSIs
+7. A delete operation for each expired item enters the DynamoDB Streams (can help recover expired items)
+8. Use cases: reduce stored data by keeping only current items, adhere to regulatory obligations,
+![Untitled](https://github.com/user-attachments/assets/68e1e643-d4da-4511-8eae-7e8193e7255d)
+
+##DynamoDB – Large Objects Pattern
+![image](https://github.com/user-attachments/assets/53f04b2b-2a5d-4109-8fe6-9cb3e0b0beed)
+
