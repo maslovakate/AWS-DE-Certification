@@ -1243,5 +1243,4 @@ DynamoDB Streams are made of shards, just like Kinesis Data Streams. You don’t
 ![Untitled](https://github.com/user-attachments/assets/68e1e643-d4da-4511-8eae-7e8193e7255d)
 
 ##DynamoDB – Large Objects Pattern
-![image](https://github.com/user-attachments/assets/53f04b2b-2a5d-4109-8fe6-9cb3e0b0beed)
-
+![Untitled](https://github.com/user-attachments/assets/498cb597-e253-4b4d-9157-148b98d5fe13)
