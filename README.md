@@ -1244,3 +1244,19 @@ DynamoDB Streams are made of shards, just like Kinesis Data Streams. You don’t
 
 ##DynamoDB – Large Objects Pattern
 ![Untitled](https://github.com/user-attachments/assets/498cb597-e253-4b4d-9157-148b98d5fe13)
+
+## DynamoDB – Indexing S3 Objects Metadata
+![image](https://github.com/user-attachments/assets/867984fc-0ca4-420d-9cb0-ec0433e43830)
+## DynamoDB – Security & Other Features
+1. Security
+- VPC Endpoints available to access DynamoDB without using the Internet
+- Access fully controlled by IAM
+- Encryption at rest using AWS KMS and in-transit using SSL/TLS
+2. Backup and Restore feature available
+- Point-in-time Recovery (PITR) like RDS
+- No performance impact
+3. Global Tables
+- Multi-region, multi-active, fully replicated, high performance
+4. DynamoDB Local
+- Develop and test apps locally without accessing the DynamoDB web service (without Internet)
+5. AWS Database Migration Service (AWS DMS) can be used to migrate to DynamoDB (from MongoDB, Oracle, MySQL, S3, …)
