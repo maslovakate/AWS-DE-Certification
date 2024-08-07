@@ -1240,7 +1240,7 @@ DynamoDB Streams are made of shards, just like Kinesis Data Streams. You don’t
 6. Expired items are deleted from both LSIs and GSIs
 7. A delete operation for each expired item enters the DynamoDB Streams (can help recover expired items)
 8. Use cases: reduce stored data by keeping only current items, adhere to regulatory obligations,
-![Untitled](https://github.com/user-attachments/assets/68e1e643-d4da-4511-8eae-7e8193e7255d)
+![Untitled](https://github.com/user-attachments/assets/682af4ea-2b6f-42e4-b2b8-92d7c218f4bc)
 
 ##DynamoDB – Large Objects Pattern
 ![Untitled](https://github.com/user-attachments/assets/498cb597-e253-4b4d-9157-148b98d5fe13)
