@@ -1260,3 +1260,6 @@ DynamoDB Streams are made of shards, just like Kinesis Data Streams. You don’t
 4. DynamoDB Local
   - Develop and test apps locally without accessing the DynamoDB web service (without Internet)
 5. AWS Database Migration Service (AWS DMS) can be used to migrate to DynamoDB (from MongoDB, Oracle, MySQL, S3, …)
+
+## DynamoDB – Users Interact with DynamoDB Directly
+![Untitled](https://github.com/user-attachments/assets/88bdaee6-3540-42b8-826f-6a3a858cdbc1)
