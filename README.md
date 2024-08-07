@@ -1300,3 +1300,5 @@ Relational Database Service
 - At-rest with KMS
 - Data, backup, snapshots, and replicas can be encrypted
 - In-transit with SSL
+
+## Using the LOCK command
