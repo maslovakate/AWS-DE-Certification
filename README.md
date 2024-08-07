@@ -1263,3 +1263,11 @@ DynamoDB Streams are made of shards, just like Kinesis Data Streams. You don’t
 
 ## DynamoDB – Users Interact with DynamoDB Directly
 ![Untitled](https://github.com/user-attachments/assets/88bdaee6-3540-42b8-826f-6a3a858cdbc1)
+
+##DynamoDB – Fine-Grained Access Control
+- Using Web Identity Federation or Cognito Identity Pools, each user gets AWS credentials;
+- You can assign an IAM Role to these users with a Conditionto limit their API access to DynamoDB;
+- LeadingKeys – limit row-level access for users on the Primary Key;
+- Attributes – limit specific attributes the user can see.
+![image](https://github.com/user-attachments/assets/89d6beca-9afd-45a5-93ce-94e6e2e299f4)
+
