@@ -1405,3 +1405,68 @@ Fully managed graph database
 ## Amazon Timestream – Architecture
 ![image](https://github.com/user-attachments/assets/9178b265-0f02-44de-b1af-5cbe7b792a5a)
 
+# Amazon Redshift
+**Fully-managed, petabyte-scale data warehouse**
+## What is Redshift?
+- Fully-managed, petabyte scale data warehouse service;
+- 10X better performance than other DW’s
+  - Via machine learning
+  - Massively parallel query execution
+  - Columnar storage
+- Designed for OLAP, not OLTP;
+- Cost effective;
+- SQL, ODBC, JDBC interfaces;
+- Scale up or down on demand;
+- Built-in replication & backups;
+- Monitoring via CloudWatch / CloudTra.
+
+## Redshift Use-Cases
+- Accelerate analytics workloads;
+- Unified data warehouse & data lake;
+- Data warehouse modernization;
+- Analyze global sales data;
+- Store historical stock trade data;
+- Analyze ad impressions & clicks;
+- Aggregate gaming data;
+- Analyze social trends.
+
+## Redshift architecture
+![image](https://github.com/user-attachments/assets/d07efbf9-2437-4f5c-94fe-d195237fb1c1)
+
+## Redshift Spectrum 
+- Query exabytes of unstructured data in S3 without loading;
+- Limitless concurrency;
+- Horizontal scaling;
+- Separate storage & compute resources;
+- Wide variety of data formats;
+- Support of Gzip and Snappy compression.
+
+## Redshift Performance
+- Massively Parallel Processing (MPP);
+- Columnar Data Storage;
+- Column Compression.
+
+## Redshift Durability
+- Replication within cluster
+- Backup to S3
+  - Asynchronously replicated to another region
+- Automated snapshots
+- Failed drives / nodes automatically replaced
+- However – limited to a single availability zone (AZ)
+  - Multi-AZ for RA3 clusters now available
+
+## Scaling Redshift
+- Vertical and horizontal scaling on demand;
+  - During scaling a new cluster is created while your old one remains available for reads;
+- CNAME is flipped to new cluster (a few minutes of downtime);
+- Data moved in parallel to new compute nodes.
+
+## Redshift Distribution Styles
+- **AUTO**
+  - Redshift figures it out based on size of data
+- **EVEN**
+  - Rows distributed across slices in round-robin
+- **KEY**
+  - Rows distributed based on one column
+- **ALL**
+  - Entire table is copied to every node
