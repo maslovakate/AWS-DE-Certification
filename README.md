@@ -1302,3 +1302,47 @@ Relational Database Service
 - In-transit with SSL
 
 ## Using the LOCK command
+- Relational databases implicitly “lock” tables to prevent two things writing to it at the same time, or reading while a write is in process.
+- Tables or rows can also be explicitly locked to ensure data integrity and concurrency control.
+- Types of locks: 
+  - **Shared Locks**: Allow reads, prevent writes. Can be held by multiple transactions. (FOR SHARE)
+  - **Exclusive Locks**: Prevent all reads and writes to a resource. Only one transaction can hold an exclusive lock.(FORE UPDATE)
+ 
+ ## Examples (MySQL)
+- **Lock an entire table**
+  - LOCK TABLES employees WRITE; -- Locks the entire 'employees' table for write operations
+  - Use UNLOCK TABLES; to release the lock.
+  - Note: Redshift also has a LOCK command for the same purpose
+- **Shared lock** (allow reads, prevent other writes during this transaction.)
+  - SELECT * FROM employees WHERE department = 'Finance' FOR SHARE;
+- **Exclusive lock** (prevent all reads and writes during this transaction)
+  - SELECT * FROM employees WHERE employee_id = 123 FOR UPDATE;
+Make sure the transactions any locks are in complete, or you could end up with a "deadlock".
+
+## Amazon RDS best practices
+**Amazon RDS operational guidelines**
+1. Use **CloudWatch** to monitor memory, CPU, storage, replica lag
+2. Perform automatic **backups** during daily low in write IOPS
+3. **Insufficient I/O** will make recovery after failure slow
+  - Migrate to DB instance with more I/O
+  - Move to General Purpose or Provisioned IOPS storage
+4. Set **TTL** on DNS for your DB instances to 30 seconds or less from your apps
+5. Test **failover** before you need it
+6. Provision **enough RAM** to include your entire working set
+  - If your ReadIOPS metric is small and stable, you’re good
+7. **Rate limits** in Amazon API Gateway can be used to protect your databas
+
+## Query optimization in RDS
+1. Use **indexes** to accelerate SELECT statements
+2. Use **EXPLAIN plans** to identify the indexes you need
+3. Avoid full table scans
+4. Use **ANALYZE TABLE** periodically 
+5. Simplify WHERE clauses
+6. Engine-specific optimizations
+
+## DB-specific tweak
+**SQL Server**
+  - Use RDS DB Events to monitor failovers
+  - Do not enable simple recover mode, offline mode, or read-only mode (this breaks Multi-AZ)
+  - Deploy into all AZ’s
+**Oracle is its own beast**
