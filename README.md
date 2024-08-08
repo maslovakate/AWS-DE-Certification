@@ -1466,7 +1466,10 @@ Fully managed graph database
   - Redshift figures it out based on size of data
 - **EVEN**
   - Rows distributed across slices in round-robin
+![image](https://github.com/user-attachments/assets/b059f7c0-3d20-4539-b6ef-acd12c8054ca)
 - **KEY**
   - Rows distributed based on one column
+![image](https://github.com/user-attachments/assets/af1989cb-a4ea-4f4a-8511-14cd6905ccab)
 - **ALL**
   - Entire table is copied to every node
+![image](https://github.com/user-attachments/assets/22bcfe42-4602-479d-9064-9a8a84228d0f)
