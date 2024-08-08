@@ -1310,13 +1310,13 @@ Relational Database Service
  
  ## Examples (MySQL)
 - **Lock an entire table**
-  - LOCK TABLES employees WRITE; -- Locks the entire 'employees' table for write operations
-  - Use UNLOCK TABLES; to release the lock.
+  - `LOCK TABLES employees WRITE;` -- Locks the entire 'employees' table for write operations
+  - Use `UNLOCK TABLES;` to release the lock.
   - Note: Redshift also has a LOCK command for the same purpose
 - **Shared lock** (allow reads, prevent other writes during this transaction.)
-  - SELECT * FROM employees WHERE department = 'Finance' FOR SHARE;
+  - `SELECT * FROM employees WHERE department = 'Finance' FOR SHARE;`
 - **Exclusive lock** (prevent all reads and writes during this transaction)
-  - SELECT * FROM employees WHERE employee_id = 123 FOR UPDATE;
+  - `SELECT * FROM employees WHERE employee_id = 123 FOR UPDATE;`
 Make sure the transactions any locks are in complete, or you could end up with a "deadlock".
 
 ## Amazon RDS best practices
@@ -1375,7 +1375,7 @@ Make sure the transactions any locks are in complete, or you could end up with a
 - Capacity: On-demand mode or provisioned mode with auto-scaling
 - Encryption, backup, Point-In-Time Recovery (PITR) up to 35 days
 
-`**Use cases:** store IoT devices info, time-series data...`
+`Use cases: store IoT devices info, time-series data...`
 
 ## Amazon Neptune
 Fully managed graph database 
@@ -1400,4 +1400,4 @@ Fully managed graph database
 - Built-in time series analytics functions (helps you identify patterns in your data in near real-time);
 - Encryption in transit and at rest.
 
-`**Use cases:** IoT apps, operational applications, real-time analytics.`
+`Use cases: IoT apps, operational applications, real-time analytics.`
