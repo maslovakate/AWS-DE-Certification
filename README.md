@@ -1374,7 +1374,7 @@ Make sure the transactions any locks are in complete, or you could end up with a
 - Single-digit millisecond latency at any scale, 1000s of requests per second
 - Capacity: On-demand mode or provisioned mode with auto-scaling
 - Encryption, backup, Point-In-Time Recovery (PITR) up to 35 days
-      **Use cases:** store IoT devices info, time-series data...
+        **Use cases:** store IoT devices info, time-series data...
 
 ## Amazon Neptune
 Fully managed graph database 
@@ -1398,4 +1398,4 @@ Fully managed graph database
 - Data storage tiering: recent data kept in memory and historical data kept in a cost-optimized storage;
 - Built-in time series analytics functions (helps you identify patterns in your data in near real-time);
 - Encryption in transit and at rest.
-      **Use cases:** IoT apps, operational applications, real-time analytics.
+        **Use cases:** IoT apps, operational applications, real-time analytics.
