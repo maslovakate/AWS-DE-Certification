@@ -1321,28 +1321,81 @@ Make sure the transactions any locks are in complete, or you could end up with a
 
 ## Amazon RDS best practices
 **Amazon RDS operational guidelines**
-1. Use **CloudWatch** to monitor memory, CPU, storage, replica lag
-2. Perform automatic **backups** during daily low in write IOPS
+1. Use **CloudWatch** to monitor memory, CPU, storage, replica lag;
+2. Perform automatic **backups** during daily low in write IOPS;
 3. **Insufficient I/O** will make recovery after failure slow
   - Migrate to DB instance with more I/O
   - Move to General Purpose or Provisioned IOPS storage
-4. Set **TTL** on DNS for your DB instances to 30 seconds or less from your apps
-5. Test **failover** before you need it
-6. Provision **enough RAM** to include your entire working set
+4. Set **TTL** on DNS for your DB instances to 30 seconds or less from your apps;
+5. Test **failover** before you need it;
+6. Provision **enough RAM** to include your entire working set;
   - If your ReadIOPS metric is small and stable, you’re good
-7. **Rate limits** in Amazon API Gateway can be used to protect your databas
+7. **Rate limits** in Amazon API Gateway can be used to protect your databas.
 
 ## Query optimization in RDS
-1. Use **indexes** to accelerate SELECT statements
-2. Use **EXPLAIN plans** to identify the indexes you need
-3. Avoid full table scans
-4. Use **ANALYZE TABLE** periodically 
-5. Simplify WHERE clauses
-6. Engine-specific optimizations
+1. Use **indexes** to accelerate SELECT statements;
+2. Use **EXPLAIN plans** to identify the indexes you need;
+3. Avoid full table scans;
+4. Use **ANALYZE TABLE** periodically ;
+5. Simplify WHERE clauses;
+6. Engine-specific optimizations.
 
 ## DB-specific tweak
 - **SQL Server**
-  - Use RDS DB Events to monitor failovers
-  - Do not enable simple recover mode, offline mode, or read-only mode (this breaks Multi-AZ)
-  - Deploy into all AZ’s
+  - Use RDS DB Events to monitor failovers;
+  - Do not enable simple recover mode, offline mode, or read-only mode (this breaks Multi-AZ);
+  - Deploy into all AZ’s.
 - **Oracle is its own beast**
+
+## DocumentDB
+- Aurora is an “AWS-implementation” of PostgreSQL / MySQL ;
+- DocumentDB is the same for MongoDB (which is a NoSQL database);
+- MongoDB is used to store, query, and index JSON data;
+- Similar “deployment concepts” as Aurora;
+- Fully Managed, highly available with replication across 3 AZ;
+- DocumentDB storage automatically grows in increments of 10GB;
+- Automatically scales to workloads with millions of requests per second.
+
+## Amazon MemoryDB for Redis
+**Redis** - compatible, durable, in-memory database service
+- Ultra-fast performance with over 160 millions requests/second;
+- Durable in-memory data storage with Multi-AZ transactional log;
+- Scale seamlessly from 10s GBs to 100s TBs of storage;
+- Use cases: web and mobile apps, online gaming, media streaming.
+![image](https://github.com/user-attachments/assets/b39ed835-cd4a-47a1-bd72-b911cb9ef5d4)
+
+## Amazon Keyspaces (for Apache Cassandra)
+**Apache Cassandra** is an open-source NoSQL distributed database
+- A managed Apache Cassandra-compatible database service
+- Serverless, Scalable, highly available, fully managed by AWS
+- Automatically scale tables up/down based on the application’s traffic
+- Tables are replicated 3 times across multiple AZ
+- Using the Cassandra Query Language (CQL)
+- Single-digit millisecond latency at any scale, 1000s of requests per second
+- Capacity: On-demand mode or provisioned mode with auto-scaling
+- Encryption, backup, Point-In-Time Recovery (PITR) up to 35 days
+**Use cases:** store IoT devices info, time-series data...
+
+## Amazon Neptune
+Fully managed graph database 
+- A popular graph dataset would be a social network:
+  - Users have friends
+  - Posts have comments
+  - Comments have likes from users
+  - Users share and like posts…
+- Highly available across 3 AZ, with up to 15 read replicas;
+- Build and run applications working with highly connected datasets – optimized for these complex and hard queries;
+- Can store up to billions of relations and query the graph with milliseconds latency;
+- Highly available with replications across multiple AZs;
+- Great for knowledge graphs (Wikipedia), fraud detection, recommendation engines, social networking.
+
+## Amazon Timestream
+- Fully managed, fast, scalable, serverless time series database;
+- Automatically scales up/down to adjust capacity;
+- Store and analyze trillions of events per day;
+- 1000s times faster & 1/10th the cost of relational databases;
+- Scheduled queries, multi-measure records, SQL compatibility;
+- Data storage tiering: recent data kept in memory and historical data kept in a cost-optimized storage;
+- Built-in time series analytics functions (helps you identify patterns in your data in near real-time);
+- Encryption in transit and at rest.
+**Use cases:** IoT apps, operational applications, real-time analytics.
