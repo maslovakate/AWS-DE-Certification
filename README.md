@@ -1341,8 +1341,8 @@ Make sure the transactions any locks are in complete, or you could end up with a
 6. Engine-specific optimizations
 
 ## DB-specific tweak
-**SQL Server**
+- **SQL Server**
   - Use RDS DB Events to monitor failovers
   - Do not enable simple recover mode, offline mode, or read-only mode (this breaks Multi-AZ)
   - Deploy into all AZ’s
-**Oracle is its own beast**
+- **Oracle is its own beast**
