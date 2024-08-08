@@ -1401,3 +1401,7 @@ Fully managed graph database
 - Encryption in transit and at rest.
 
 `Use cases: IoT apps, operational applications, real-time analytics.`
+
+## Amazon Timestream – Architecture
+![image](https://github.com/user-attachments/assets/9178b265-0f02-44de-b1af-5cbe7b792a5a)
+
