@@ -280,7 +280,7 @@ Lightweight, text-based, and human-readable data interchange format that represe
 When to Use:
 - Data interchange between a web server and a web client;
 - Configurations and settings for software applications;
-- Use cases that need a flexible schema or nested data structures.
+- `Use cases that need a flexible schema or nested data structures`.
 
 Systems: Web browsers, many programming languages (like JavaScript, Python, Java, etc.), RESTful APIs, NoSQL databases (like MongoDB)
 
@@ -300,7 +300,7 @@ Columnar storage format optimized for analytics. Allows for efficient compressio
 
 When to Use:
 - Analyzing large datasets with analytics engines;
-- Use cases where reading specific columns instead of entire records is beneficial;
+- `Use cases: where reading specific columns instead of entire records is beneficial`;
 - Storing data on distributed systems where I/O operations and storage need optimization.
 
 Systems: Hadoop ecosystem, Apache Spark, Apache Hive, Apache Impala, Amazon Redshift Spectrum.
@@ -633,7 +633,7 @@ Amazon S3 is ”infinitely scaling” storage
 - Low latency and high throughput;
 - Sustain 2 concurrent facility failures.
 
-- Use Cases: Big Data analytics, mobile & gaming applications, content distribution…
+`Use Cases: Big Data analytics, mobile & gaming applications, content distribution`
 
 ## S3 Storage Classes – Infrequent Access
 - For data that is less frequently accessed, but requires rapid access when needed;
@@ -641,12 +641,12 @@ Amazon S3 is ”infinitely scaling” storage
 
 - **Amazon S3 Standard-Infrequent Access** (S3 Standard-IA)
   - 99.9% Availability;
-  - Use cases: Disaster Recovery, backups.
+ ` Use cases: Disaster Recovery, backups`.
 
 - **Amazon S3 One Zone-Infrequent Access** (S3 One Zone-IA)
   - High durability (99.999999999%) in a single AZ; data lost when AZ is destroyed;
   - 99.5% Availability;
-  - Use Cases: Storing secondary backup copies of on-premises data, or data you can recreate.
+`Use Cases: Storing secondary backup copies of on-premises data, or data you can recreate`.
 
 ## Amazon S3 Glacier Storage Classes
 - Low-cost object storage meant for archiving / backup;
@@ -1076,7 +1076,7 @@ To compute the number of partitions:
 - Write Request Units (WRU) – throughput for writes (same as WCU);
 - 2.5x more expensive than provisioned capacity (use with care).
 
-**Use cases: unknown workloads, unpredictable application traffic**
+`Use cases: unknown workloads, unpredictable application traffic`
 
 ## DynamoDB – Writing Data
 **1. PutItem**
@@ -1217,7 +1217,7 @@ SQL-compatible query language for DynamoDB
   - Analytics
   - Insert into derivative tables
   - Insert into OpenSearch Service
-  - Implement cross-region replicatio
+  - Implement cross-region replication
 ![image](https://github.com/user-attachments/assets/24029356-c6ed-4ae9-b25d-7ebeafa2a115)
 Ability to choose the information that will be written to the stream:
 - KEYS_ONLY – only the key attributes of the modified item
@@ -1239,7 +1239,7 @@ DynamoDB Streams are made of shards, just like Kinesis Data Streams. You don’t
 5. Expired items, that haven’t been deleted, appears in reads/queries/scans (if you don’t want them, filter them out)
 6. Expired items are deleted from both LSIs and GSIs
 7. A delete operation for each expired item enters the DynamoDB Streams (can help recover expired items)
-8. Use cases: reduce stored data by keeping only current items, adhere to regulatory obligations,
+`Use cases: reduce stored data by keeping only current items, adhere to regulatory obligations`
 ![Untitled](https://github.com/user-attachments/assets/682af4ea-2b6f-42e4-b2b8-92d7c218f4bc)
 
 ##DynamoDB – Large Objects Pattern
@@ -1360,20 +1360,20 @@ Make sure the transactions any locks are in complete, or you could end up with a
 **Redis** - compatible, durable, in-memory database service
 - Ultra-fast performance with over 160 millions requests/second;
 - Durable in-memory data storage with Multi-AZ transactional log;
-- Scale seamlessly from 10s GBs to 100s TBs of storage;
-- Use cases: web and mobile apps, online gaming, media streaming.
+- Scale seamlessly from 10s GBs to 100s TBs of storage.
+`Use cases: web and mobile apps, online gaming, media streaming`
 ![image](https://github.com/user-attachments/assets/b39ed835-cd4a-47a1-bd72-b911cb9ef5d4)
 
 ## Amazon Keyspaces (for Apache Cassandra)
 **Apache Cassandra** is an open-source NoSQL distributed database
-- A managed Apache Cassandra-compatible database service
-- Serverless, Scalable, highly available, fully managed by AWS
-- Automatically scale tables up/down based on the application’s traffic
-- Tables are replicated 3 times across multiple AZ
-- Using the Cassandra Query Language (CQL)
-- Single-digit millisecond latency at any scale, 1000s of requests per second
-- Capacity: On-demand mode or provisioned mode with auto-scaling
-- Encryption, backup, Point-In-Time Recovery (PITR) up to 35 days
+- A managed Apache Cassandra-compatible database service;
+- Serverless, Scalable, highly available, fully managed by AWS;
+- Automatically scale tables up/down based on the application’s traffic;
+- Tables are replicated 3 times across multiple AZ;
+- Using the Cassandra Query Language (CQL);
+- Single-digit millisecond latency at any scale, 1000s of requests per second;
+- Capacity: On-demand mode or provisioned mode with auto-scaling;
+- Encryption, backup, Point-In-Time Recovery (PITR) up to 35 days.
 
 `Use cases: store IoT devices info, time-series data...`
 
