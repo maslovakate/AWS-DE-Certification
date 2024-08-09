@@ -1473,3 +1473,31 @@ Fully managed graph database
 - **ALL**
   - Entire table is copied to every node
 ![image](https://github.com/user-attachments/assets/22bcfe42-4602-479d-9064-9a8a84228d0f)
+
+## Importing / Exporting data • 
+- `COPY` command;
+  - Parallelized; efficient
+  - From S3, EMR, DynamoDB, remote hosts
+  - S3 requires a manifest file and IAM role
+- `UNLOAD` command;
+  - Unload from a table into files in S3
+- Enhanced VPC routing;
+- Auto-copy from Amazon S3;
+- Amazon Aurora zero-ETL integration;
+  - Auto replication from Aurora -> Redshift
+- Redshift Streaming Ingestion;
+  - From Kinesis Data Streams or MSK
+
+ ## COPY command
+- Use COPY to load large amounts of data from outside of Redshift;
+- If your data is already in Redshift in another table;
+  - Use `INSERT INTO …SELECT`
+  - Or `CREATE TABLE AS`
+- `COPY` can decrypt data as it is loaded from S3;
+  - Hardware-accelerated SSL used to keep it fast
+- `Gzip`, `lzop`, and `bzip2` compression supported to speed it up further;
+- Automatic compression option;
+  - Analyzes data being loaded and figures out optimal compression scheme for storing it
+- Special case: narrow tables (lots of rows, few columns);
+  - Load with a single `COPY` transaction if possible
+  - Otherwise hidden metadata columns consume too much space
