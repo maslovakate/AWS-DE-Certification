@@ -1510,3 +1510,81 @@ Let’s say you have a KMS-encrypted Redshift cluster and a snapshot of it. You 
   - Specify the KMS key ID for which you’re creating the copy grant
 - In the source AWS region:
   - Enable copying of snapshots to the copy grant you just created
+ 
+## DBLINK
+- Connect Redshift to PostgreSQL (possibly in RDS);
+- Good way to copy and sync data between PostgreSQL and Redshift.
+  CREATE EXTENSION postgres_fdw;
+  
+`CREATE EXTENSION dblink;
+CREATE SERVER foreign_server
+FOREIGN DATA WRAPPER postgres_fdw
+OPTIONS (host '<amazon_redshift _ip>', port '<port>', dbname '<database_name>', sslmode
+'require');
+CREATE USER MAPPING FOR <rds_postgresql_username>
+SERVER foreign_server
+OPTIONS (user '<amazon_redshift_username>', password '<password>')`
+
+## Integration with other services
+1. S3
+2. DynamoDB
+3. EMR / EC2
+4. Data Pipeline
+5. Database Migration Service
+![image](https://github.com/user-attachments/assets/c4a5ed18-1390-42a4-833b-25b8961cef03)
+
+## Redshift Workload Management (WLM)
+- Prioritize short, fast queries vs. long, slow queries
+- Query queues
+- Via console, CLI, or API
+
+## Concurrency Scaling
+- Automatically adds cluster capacity to handle increase in concurrent read queries
+- Support virtually unlimited concurrent users & queries
+- WLM queues manage which queries are sent to the concurrency scaling cluster
+
+## Automatic Workload Management
+- Creates up to 8 queues
+- Default 5 queues with even memory allocation
+- Large queries (ie big hash joins) -> concurrency lowered
+- Small queries (ie inserts, scans, aggregations) -> concurrency raised
+  - Configuring query queues
+  - Priority
+  - Concurrency scaling mode
+  - User
+  - Query groups
+  - Query monitoring rules
+ 
+## Manual Workload Management
+- One default queue with concurrency level of 5 (5 queries at once)
+- Superuser queue with concurrency level 1
+- Define up to 8 queues, up to concurrency level 50
+- Each can have defined concurrency scaling mode, concurrency level, user groups, query groups, memory, timeout, query monitoring rules
+  - Can also enable query queue hopping
+  - Timed out queries “hop” to next queue to try again
+
+## Short Query Acceleration (SQA)
+- Prioritize short-running queries over longer-running ones
+- Short queries run in a dedicated space, won’t wait in queue behind long queries
+- Can be used in place of WLM queues for short queries
+- Works with:
+  - `CREATE TABLE AS` (CTAS)
+  - Read-only queries (SELECT statements)
+- Uses machine learning to predict a query’s execution time
+- Can configure how many seconds is “short” sundog
+
+## Resizing Redshift Clusters
+- Elastic resize
+  - Quickly add or remove nodes of same type
+    - (It *can* change node types, but not without dropping connections – it creates a whole new cluster)
+  - Cluster is down for a few minutes
+  - Tries to keep connections open across the downtime
+  - Limited to doubling or halving for some dc2 and ra3 node types.
+- Classic resize
+  - Change node type and/or number of nodes
+  - Cluster is read-only for hours to days
+- Snapshot, restore, resize
+  - Used to keep cluster available during a classic resize
+  - Copy cluster, resize new cluster
+
+## VACUUM command
