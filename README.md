@@ -1501,3 +1501,12 @@ Fully managed graph database
 - Special case: narrow tables (lots of rows, few columns);
   - Load with a single `COPY` transaction if possible
   - Otherwise hidden metadata columns consume too much space
+
+## Redshift copy grants for cross-region snapshot copies
+Let’s say you have a KMS-encrypted Redshift cluster and a snapshot of it. You want to copy that snapshot to another region for backup.
+- In the destination AWS region:
+  - Create a KMS key if you don’t have one already
+  - Specify a unique name for your snapshot copy grant
+  - Specify the KMS key ID for which you’re creating the copy grant
+- In the source AWS region:
+  - Enable copying of snapshots to the copy grant you just created
