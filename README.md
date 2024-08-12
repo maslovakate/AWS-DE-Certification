@@ -1588,3 +1588,105 @@ OPTIONS (user '<amazon_redshift_username>', password '<password>')`
   - Copy cluster, resize new cluster
 
 ## VACUUM command
+- Recovers space from deleted rows and restores sort order;
+- `VACUUM FULL`;
+- `VACUUM DELETE ONLY`;
+  - Skips the sort ;
+- `VACUUM SORT ONLY `;
+  - Does not reclaim space!;
+- VACUUM REINDEX;
+  - Re-analyzes distribution of sort key columns;
+  - Then does a full VACUUM.
+ 
+## Newer Redshift features
+- **RA3 nodes with managed storage**;
+  - Enable independent scaling of compute and storage;
+  - SSD-based;
+- R**edshift data lake export**;
+  - Unload Redshift query to S3 in Apache Parquet format;
+  - Parquet is 2x faster to unload and consumes up to 6X less storage;
+  - Compatible with Redshift Spectrum, Athena, EMR, SageMaker;
+  - Automatically partitioned;
+- **Spatial data types**;
+  - GEOMETRY, GEOGRAPHY;
+- **Cross-Region Data Sharing**;
+  - Share live data across Redshift clusters without copying;
+  - Requires new RA3 node type;
+  - Secure, across regions and across accounts.
+
+## Redshift anti-patterns
+- **Small data sets**;
+  - Use RDS instead;
+-** OLTP**;
+  - Use RDS or DynamoDB instead;
+- **Unstructured data**;
+  - ETL first with EMR etc;
+- **BLOB data**;
+  - Store references to large binary files in S3, not the files themselves.
+
+## Redshift security concerns
+- Using a Hardware Security Module **(HSM)**;
+  - Must use a client and server certificate to configure a trusted connection between Redshift and the HSM;
+  - If migrating an unencrypted cluster to an HSM-encrypted cluster, you must create the new encrypted cluster and then move data to it;
+- Defining access privileges for user or group
+  - Use the `GRANT` or `REVOKE` commands in SQL
+  - Example: grant select on table foo to bob.
+
+## Redshift Serverless
+- Automatic scaling and provisioning for your workload;
+- Optimizes costs & performance;
+  - Pay only when in use;
+- Uses ML to maintain performance across variable & sporadic workloads;
+- Easy spinup of development and test environments;
+- Easy ad-hoc business analysis;
+- You get back a serverless endpoint, JDBC/ODBC connection, or just query via the console’s query editor.
+
+
+## Redshift Serverless: Monitoring
+**Monitoring views**
+  - `SYS_QUERY_HISTORY`
+  - `SYS_LOAD_HISTORY`
+  - `SYS_SERVERLESS_USAGE`
+**CloudWatch logs**
+  - Connection & user logs enabled by default
+  - Optional user activity log data
+  - Under /aws/redshift/serverless/
+**CloudWatch metrics**
+  - QueriesCompletedPerSecond, QueryDuration, QueriesRunning,etc.
+  - Dimensions: DatabaseName, latency (short/medium/long), QueryType, stage.
+
+## Redshift Materialized Views
+- Contain precomputed results based on SQL queries over one or more base tables;
+  - This differs from a “normal” view in that it actually stores the results of the query;
+- Provide a way to speed up complex queries in a data warehouse environment, especially on large tables;
+- You can query materialized views just like any other tables or views;
+- Queries return results faster since they use precomputed results without accessing base tables;
+- They're particularly beneficial for predictable and recurring queries, e.g., populating dashboards like Amazon QuickSight.
+
+## Using Materialized Views
+- `CREATE MATERIALIZED VIEW`…;
+- Keeping them refreshed;
+  - `REFRESH MATERIALIZED VIEW`…;
+  - Set `AUTO REFRESH` option on creation;
+- Query them just like any other table or view;
+- Materialized views can be built from other materialized views;
+  - Useful for re-using expensive joins.
+
+`CREATE MATERIALIZED VIEW tickets_mv AS
+   select catgroup,
+   sum(qtysold) as sold
+   from category c, event e, sales s
+   where c.catid = e.catid
+   and e.eventid = s.eventid
+   group by catgroup;`
+
+## Redshift System Tables and Views
+- Contains info about how Redshift is functioning;
+- Types of system tables / views;
+  - **SYS views**: Monitor query & workload usage;
+  - **STV tables**: Transient data containing snapshots of current system data;
+  - **SVV views**: metadata about DB objects that reference STV tables;
+  - **STL views**: Generated from logs persisted to disk;
+  - **SVCS views**: Details about queries on main & concurrency scaling clusters;
+  - **SVL views**: Details about queries on main clusters;
+- Many system monitoring views & tables are only for provisioned clusters, not serverles.
