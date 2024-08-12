@@ -1672,13 +1672,13 @@ OPTIONS (user '<amazon_redshift_username>', password '<password>')`
 - Materialized views can be built from other materialized views;
   - Useful for re-using expensive joins.
 
-             CREATE MATERIALIZED VIEW tickets_mv AS
-             select catgroup,
-             sum(qtysold) as sold
-             from category c, event e, sales s
-             where c.catid = e.catid
-             and e.eventid = s.eventid
-             group by catgroup;
+           CREATE MATERIALIZED VIEW tickets_mv AS
+           select catgroup,
+           sum(qtysold) as sold
+           from category c, event e, sales s
+           where c.catid = e.catid
+           and e.eventid = s.eventid
+           group by catgroup;
 
 ## Redshift System Tables and Views
 - Contains info about how Redshift is functioning;
