@@ -1690,3 +1690,44 @@ OPTIONS (user '<amazon_redshift_username>', password '<password>')`
   - **SVCS views**: Details about queries on main & concurrency scaling clusters;
   - **SVL views**: Details about queries on main clusters;
 - Many system monitoring views & tables are only for provisioned clusters, not serverles.
+
+# Migration and Transfer
+Moving data into AWS
+
+## AWS Application Discovery Service
+- Plan migration projects by gathering information about on-premises data centers;
+- Server utilization data and dependency mapping are important for migrations;
+- Agentless Discovery (AWS Agentless Discovery Connector);
+  - VM inventory, configuration, and performance history such as CPU, memory, and disk usage;
+- Agent-based Discovery (AWS Application Discovery Agent);
+  - System configuration, system performance, running processes, and details of the network connections between systems;
+- Resulting data can be viewed within AWS Migration Hub.
+
+## AWS Application Migration Service (MGN)
+- The “AWS evolution” of CloudEndure Migration, replacing AWS Server Migration Service (SMS);
+- Lift-and-shift (rehost) solution which simplify migrating applications to AWS;
+- Converts your physical, virtual, and cloud-based servers to run natively on AWS;
+- Supports wide range of platforms, Operating Systems, and databases;
+- Minimal downtime, reduced costs.
+![Untitled](https://github.com/user-attachments/assets/6bed617f-92b2-4c67-af7e-47e8927e57b0)
+
+## DMS – Database Migration Service
+- Quickly and securely migrate databases to AWS, resilient, self healing;
+- The source database remains available during the migration;
+- Supports:
+  - Homogeneous migrations: ex Oracle to Oracle;
+  - Heterogeneous migrations: ex Microsoft SQL Server to Aurora;
+- Continuous Data Replication using CDC;
+- You must create an EC2 instance to perform the replication tasks.
+
+## DMS Sources and Targets
+|SOURCES  |  TARGETS |
+| ------------- | ------------- |
+| On-Premises and EC2 instances databases: Oracle, MS SQL Server, MySQL, MariaDB, PostgreSQL, MongoDB, SAP, DB2 | On-Premises and EC2 instances databases: Oracle, MS SQL Server, MySQL, MariaDB, PostgreSQL, SAP |
+| Azure: Azure SQL Database | Amazon RDS |
+| Amazon RDS: all including Aurora | Redshift, DynamoDB, S3 |
+| Amazon S3 | OpenSearch Service |
+| DocumentDB | Kinesis Data Streams |
+|  | Apache Kafka |
+|  | DocumentDB & Amazon Neptune |
+|  | Redis & Babelfish |
