@@ -1731,3 +1731,98 @@ Moving data into AWS
 |  | Apache Kafka |
 |  | DocumentDB & Amazon Neptune |
 |  | Redis & Babelfish |
+
+## AWS Schema Conversion Tool (SCT)
+- Convert your Database’s Schema from one engine to another;
+- Example OLTP: (SQL Server or Oracle) to MySQL, PostgreSQL, Aurora;
+- Example OLAP: (Teradata or Oracle) to Amazon Redshift;
+- Prefer compute-intensive instances to optimize data conversions;
+![image](https://github.com/user-attachments/assets/e99f205d-b79a-4520-82c1-3e137957704d)
+- **You do not need to use SCT if you are migrating the same DB engine**;
+  - Ex: On-Premise PostgreSQL => RDS PostgreSQL;
+  - The DB engine is still PostgreSQL (RDS is the platform).
+
+## DMS - Continuous Replication
+![image](https://github.com/user-attachments/assets/6f5d71b8-9a4b-4579-8ab8-21d0c6bb273a)
+
+## AWS DMS – Multi-AZ Deployment
+- When Multi-AZ Enabled, DMS provisions and maintains a synchronously stand replica in a different AZ;
+- Advantages:
+  - Provides Data Redundancy;
+  - Eliminates I/O freezes;
+  - Minimizes latency spike.
+![image](https://github.com/user-attachments/assets/6774ddaf-33ed-4c28-abd4-899b7bb49de7)
+
+## AWS DataSync
+- Move large amount of data to and from;
+  - On-premises / other cloud to AWS (NFS, SMB, HDFS, S3 API…) –needs agent;
+  - AWS to AWS (different storage services) – no agent needed;
+- Can synchronize to:
+  - Amazon S3 (any storage classes – including Glacier);
+  - Amazon EFS;
+  - Amazon FSx (Windows, Lustre, NetApp, OpenZFS...);
+- Replication tasks can be scheduled hourly, daily, weekly;
+- File permissions and metadata are preserved (NFS POSIX, SMB…);
+- One agent task can use 10 Gbps, can setup a bandwidth limit.
+
+## AWS DataSyncNFS / SMB to AWS (S3, EFS, FSx…)
+![Untitled](https://github.com/user-attachments/assets/87b2655e-cc94-4002-aeb2-85e36c4149da)
+
+## AWS DataSyncTransfer between AWS storage services
+![image](https://github.com/user-attachments/assets/cd30dc12-7a73-4452-982f-1b134bacbf0a)
+
+## AWS Snow Family
+- Highly-secure, portable devices to collect and process data at the edge, and migrate data into and out of AWS
+![image](https://github.com/user-attachments/assets/1a4252c4-5b7a-4437-8f62-af3ec83d500e)
+
+## Data Migrations with AWS Snow Family
+Challenges:
+- Limited connectivity;
+- Limited bandwidth;
+- High network cost;
+- Shared bandwidth (can’t maximize the line);
+- Connection stability.
+**AWS Snow Family: offline devices to perform data migrations If it takes more than a week to transfer over the network, use Snowball devices!**
+![image](https://github.com/user-attachments/assets/4082b404-e9e5-4f92-9668-b34394171a23)
+
+## Diagrams
+- Direct upload to S3
+![image](https://github.com/user-attachments/assets/aefdc116-51b6-4851-b3ac-87c327a04d9e)
+- With Snow Family
+![image](https://github.com/user-attachments/assets/d705780b-763a-4dfe-b345-23296082f815)
+
+## Snow Family – Usage Process
+1. Request Snowball devices from the AWS console for delivery;
+2. Install the snowball client / AWS OpsHub on your servers;
+3. Connect the snowball to your servers and copy files using the client;
+4. Ship back the device when you’re done (goes to the right AWS facility);
+5. Data will be loaded into an S3 bucket;
+6. Snowball is completely wiped.
+
+## What is Edge Computing?
+- Process data while it’s being created on an edge location;
+  - A truck on the road, a ship on the sea, a mining station underground...;
+- These locations may have limited internet and no access to computing power;
+- We setup a Snowball Edge / Snowcone device to do edge computing;
+  - Snowcone: 2 CPUs, 4 GB of memory, wired or wireless access;
+  - Snowball Edge Compute Optimized (dedicated for that use case) & Storage Optimized;
+  - Run EC2 Instances or Lambda functions at the edge;
+- Use cases: preprocess data, machine learning, transcoding media.
+
+## AWS Transfer Family
+- A fully-managed service for file transfers into and out of Amazon S3 orAmazon EFS using the FTP protocol
+- Supported Protocols;
+  - **AWS Transfer for FTP** (File Transfer Protocol (FTP));
+  - **AWS Transfer for FTPS** (File Transfer Protocol over SSL (FTPS));
+  - **AWS Transfer for SFTP** (Secure File Transfer Protocol (SFTP));
+- Managed infrastructure, Scalable, Reliable, Highly Available (multi-AZ);
+- Pay per provisioned endpoint per hour + data transfers in GB;
+- Store and manage users’ credentials within the service;
+- Integrate with existing authentication systems (Microsoft Active Directory, LDAP, Okta, Amazon Cognito, custom);
+- Usage: sharing files, public datasets, CRM, ERP.
+
+## AWS Transfer Family
+![image](https://github.com/user-attachments/assets/693eff16-fa32-4872-af47-514164da3c80)
+
+
+
