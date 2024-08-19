@@ -1824,5 +1824,140 @@ Challenges:
 ## AWS Transfer Family
 ![image](https://github.com/user-attachments/assets/693eff16-fa32-4872-af47-514164da3c80)
 
+# Compute
+Transforming Data in AWS
+
+## EC2 in Big Data
+- On demand, Spot & Reserved instances:
+  - Spot: can tolerate loss, low cost => checkpointing feature (ML, etc)
+  - Reserved: long running clusters, databases (over a year)
+  - On demand: remaining workloads
+- Auto Scaling: 
+  - Leverage for EMR, etc
+  - Automated for DynamoDB, Auto Scaling Groups, etc… 
+- EC2 is behind EMR 
+  - Master Nodes
+  - Compute Nodes (contain data) + Tasks Nodes (do not contain data)
+
+## AWS Graviton
+- Amazon’s own family of processors, powers several EC2 instance types
+  - General purpose: M7, T4
+  - Compute optimized: C7, C6
+  - Memory optimized: R7, X2
+  - Storage optimized: Im4, Is4
+  - Accelerated computing (game streaming, ML inference): G5
+- Offers best price performance
+- Option for many data engineering services
+  - MSK, RDS, MemoryDB, ElastiCache, OpenSearch, EMR, Lambda, Fargat
+
+# AWS Lambda
+Serverless data processing
+
+## What is Lambda?
+- A way to run code snippets “in thecloud”
+- Serverless
+- Continuous scaling
+- Often used to process data as it’s moved aroun
+
+## Example: Serverless Website
+![image](https://github.com/user-attachments/assets/20fc7820-867a-46f2-9681-e430d353d026)
+
+## Example:Order history app
+![image](https://github.com/user-attachments/assets/a4217867-3d72-47de-8a63-0b8d8cdb3aa7)
+
+## Example: Transaction rate alarm
+![image](https://github.com/user-attachments/assets/4298850d-017f-48ba-805f-d5a3cf5f0784)
+
+## Why not just run a server?
+1. Server management (patches, monitoring, hardware failures, etc.)
+2. Servers can be cheap, but scaling gets expensive really fast
+3. You don’t pay for processing time you don’t use
+4. Easier to split up development between front-end and back-end
+
+## Main uses of Lambda
+1. Real-time file processing
+2. Real-time stream processing
+3. ETL
+4. Cron replacement
+5. Process AWS events
+
+## Supported languages
+- Node.js
+- Python
+- Java
+- C#
+- Go
+- Powershell
+- Ruby
+
+## Lambda and Amazon Opensearch Service
+![image](https://github.com/user-attachments/assets/3cb7c381-6e31-41d1-bc1d-04a5c0994474)
+
+## Lambda and Data Pipeline
+![image](https://github.com/user-attachments/assets/44400677-ed0b-4553-965d-555b2dbb93e9)
+
+## Lambda and Redshift
+Best practice for loading data into Redshift is the COPY command.
+But, you can use Lambda if you need to respond to new data that shows up at any time.
+Can use DynamoDB to keep track of what’s been loaded.Lambda can batch up new data and load them with COPY.
+![image](https://github.com/user-attachments/assets/92c95a12-8ad8-45b8-bb54-4847e796a9f5)
+
+## Lambda + Kinesis
+- Your Lambda code receives an event with a batch of stream records
+  - You specify a batch size when setting up the trigger (up to 10,000 records)
+  - Too large a batch size can cause timeouts!
+  - Batches may also be split beyond Lambda’s payload limit (6 MB)
+- Lambda will retry the batch until it succeeds or the data expires
+  - This can stall the shard if you don’t handle errors properly
+  - Use more shards to ensure processing isn’t totally held up by errors
+- Lambda processes shard data synchronousl
+![image](https://github.com/user-attachments/assets/44967643-a050-4651-aa02-b35193aeffc1)
+
+## Cost Model
+- “Pay for what you use”
+- Generous free tier (1M requests / month, 400K GB-seconds compute time)
+- $0.20 / million requests
+- $.00001667 per GB/second
+
+## Other promises
+- High availability 
+  - No scheduled downtime
+  - Retries failed code 3 times
+- Unlimited scalability*
+  - Safety throttle of 1,000 concurrent executions per region
+-  High performance
+  -  New functions callable in seconds
+  -  Events processed in milliseconds
+  -  Code is cached automatically
+  -  But you do specify a timeout! This can cause problems. Max is 900 seconds (15 min)
+
+## Anti-patterns
+- Long-running applications
+  - Use EC2 instead, or chain functions
+- Dynamic websites
+  - Although Lambda can be used to develop “serverless” apps that rely on client-side AJAX
+- Stateful applications
+  - But you can work in DynamoDB or S3 to keep track of state
+ 
+## Lambda – File Systems Mounting
+- Lambda functions can access EFS file systems if they are running in a VPC
+- Configure Lambda to mount EFS file systems to local directory during initialization
+- Must leverage EFS Access Points
+- Limitations: watch out for the EFS connection limits (one function instance = one connection) and connection burst limit
+
+## Lambda – Storage Options
+![image](https://github.com/user-attachments/assets/a5a1015f-30ce-4dea-bb04-228e2110035a)
+
+## AWS SAM
+**SAM** = **Serverless Application Model**
+- Framework for developing and deploying serverless applications
+- All the configuration is YAML code
+- Generate complex CloudFormation from simple SAM YAML file
+- Supports anything from CloudFormation: Outputs, Mappings, Parameters, Resources… 
+- SAM can use CodeDeploy to deploy Lambda functions
+- SAM can help you to run Lambda, API Gateway, DynamoDB locally
+
+
+
 
 
