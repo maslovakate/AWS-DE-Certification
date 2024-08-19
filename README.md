@@ -1957,6 +1957,68 @@ Can use DynamoDB to keep track of what’s been loaded.Lambda can batch up new d
 - SAM can use CodeDeploy to deploy Lambda functions;
 - SAM can help you to run Lambda, API Gateway, DynamoDB locally.
 
+## AWS SAM – Recipe 
+- **Transform Header indicates it’s SAM template**:
+  - Transform: 'AWS::Serverless-2016-10-31';
+- **Write Code**
+  - AWS::Serverless::Function;
+  - AWS::Serverless::Api;
+  - AWS::Serverless::SimpleTable;
+- **Package & Deploy**: sam deploy **(optionally preceded by** “sam package”**)**;
+- Quickly sync local changes to AWS Lambda (SAM Accelerate): `sam sync --watch`.
+
+## Deep Dive into SAM Deployment
+![image](https://github.com/user-attachments/assets/2804058e-40f2-47f1-aa8d-ae0aba26b06d)
+
+## SAM Accelerate (sam sync)
+- SAM Accelerate is a set of features to reduce latency while deploying resources to AWS;
+- sam sync;
+  - Synchronizes your project declared in SAM templates to AWS;
+  - Synchronizes code changes to AWS without updating infrastructure (uses service APIs & bypass CloudFormation).
+![image](https://github.com/user-attachments/assets/42c6c583-327e-4bab-896a-0b3092819ceb)
+
+## SAM Accelerate (sam sync) – Examples
+- `sam sync` (no options);
+  - Synchronize code and infrastructure;
+- `sam sync --code`;
+  - Synchronize code changes without updating infrastructure (bypass CloudFormation, update in seconds);
+- `sam sync --code --resource AWS::Serverless::Function`;
+  - Synchronize only all Lambda functions and their dependencies;
+- `sam sync --code --resource-id HelloWorldLambdaFunction`;
+  - Synchronize only a specific resource by its ID;
+- `sam sync --watch`;
+  - Monitor for file changes and automatically synchronize when changes are detected;
+  - If changes include configuration, it uses `sam sync`;
+  - If changes are code only, it uses `sam sync --code`.
+
+## SAM – CLI Debugging
+- Locally build, test, and debug your serverless applications that are defined using AWS SAM templates;
+- Provides a lambda-like execution environment locally;
+- SAM CLI + AWS Toolkits => stepthrough and debug your code;
+- Supported IDEs: AWS Cloud9, Visual Studio Code, JetBrains, PyCharm, IntelliJ, …;
+- **AWS Toolkits**: IDE plugins which allows you to build, test, debug, deploy, and invoke Lambda functions built using AWS SAM.
+
+![image](https://github.com/user-attachments/assets/04b07660-96c6-4e26-b5d6-6354558069de)
+
+## AWS Batch
+- Run batch jobs as Docker images;
+- Dynamic provisioning of the instances (EC2 & Spot Instances);
+- Optimal quantity and type based on volume and requirements;
+- No need to manage clusters, fully serverless;
+- You just pay for the underlying EC2 instances;
+- Schedule Batch Jobs using CloudWatch Events;
+- Orchestrate Batch Jobs using AWS Step Functions.
+
+## AWS Batch vs Glue
+- **Glue**:
+  - Glue ETL - Run Apache Spark code, Scala or Python based, focus on the ETL;
+  - Glue ETL - Do not worry about configuring or managing the resources;
+  - Data Catalog to make the data available to Athena or Redshift Spectrum.
+- **Batch**:
+  - For any computing job regardless of the job (must provide Docker image);
+  - Resources are created in your account, managed by Batch;
+  - For any non-ETL related work, Batch is probably bette.
+
 
 
 
