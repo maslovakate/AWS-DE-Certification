@@ -2019,7 +2019,5 @@ Can use DynamoDB to keep track of what’s been loaded.Lambda can batch up new d
   - Resources are created in your account, managed by Batch;
   - For any non-ETL related work, Batch is probably bette.
 
-
-
-
-
+# Containers
+Packaging applications in AWS
