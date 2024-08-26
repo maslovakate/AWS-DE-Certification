@@ -2286,3 +2286,99 @@ df2 = df.resolveChoice(specs = [("myList[].price",
   - Terminal window;
   - PyCharm professional edition;
   - Use Elastic IP’s to access a private endpoint address.
+
+## Running Glue jobs
+- Time-based schedules (cron style);
+- Job bookmarks:
+  - Persists state from the job run;
+  - Prevents reprocessing of old data;
+  - Allows you to process new data only when re-running on a schedule;
+  - Works with S3 sources in a variety of formats; 
+  - Works with relational databases via JDBC (if PK’s are in sequential order);
+    - Only handles new rows, not updated rows;
+- CloudWatch Events:
+- Fire off a Lambda function or SNS notification when ETL succeeds or fails;
+- Invoke EC2 run, send event to Kinesis, activate a Step Function.
+
+## Glue cost model 
+- Billed by the second for crawler and ETL jobs;
+- First million objects stored and accesses are free for the Glue Data Catalog;
+- Development endpoints for developing ETL code charged by the minute.
+
+## Glue Anti-patterns
+- Multiple ETL engines;
+- Glue ETL is based on Spark;
+- If you want to use other engines (Hive, Pig, etc) Data Pipeline EMR would be a better fit.
+
+## No longer an anti-pattern: streaming
+- As of April 2020, Glue ETL supports serverless streaming ETL;
+  - Consumes from Kinesis or Kafka;
+  - Clean & transform in-flight;
+  - Store results into S3 or other data stores;
+- Runs on Apache Spark Structured Streaming.
+
+## AWS Glue Studio 
+- Visual interface for ETL workflows;
+- Visual job editor;
+  - Create DAG’s for complex workflows;
+  - Sources include S3, Kinesis, Kafka, JDBC;
+  - Transform / sample / join data - Target to S3 or Glue Data Catalog;
+  - Support partitioning;
+- Visual job dashboard - Overviews, status, run times.
+
+## AWS Glue Data Quality 
+- Data quality rules may be created manually or recommended automatically;
+- Integrates into Glue jobs - Uses Data Quality Definition Language (DQDL);
+- Results can be used to fail the job, or just be reported to CloudWatch;
+![image](https://github.com/user-attachments/assets/fb557b28-467e-4b57-9bbc-57c34cb9568d)
+
+## AWS Glue DataBrew
+- A visual data preparation tool:
+  - UI for pre-processing large data sets;
+  - Input from S3, data warehouse, or database;
+  - Output to S3;
+- Over 250 ready-made transformations;
+- You create “recipes” of transformations that can be saved as jobs within a larger project;
+- May define data quality rules;
+- May create datasets with custom SQL from Redshift and Snowflake;
+- Security:
+  - Can integrate with KMS (with customer master keys only);
+  - SSL in transit;
+  - IAM can restrict who can do what;
+  - CloudWatch & CloudTrai.
+
+`{
+ "RecipeAction": {
+ "Operation": "NEST_TO_MAP",
+ "Parameters": {
+ "sourceColumns": 
+"[\"age\",\"weight_kg\",\"height_cm\"]",
+ "targetColumn": "columnName",
+ "removeSourceColumns": "true"
+ }
+ }
+}`
+
+## Handling Personally Identifiable Information (PII) in DataBrew Transformations 
+- Enable PII statistics in a DataBrew profile job to identify PII;
+- Substitution (REPLACE_WITH_RANDOM…);
+- Shuffling (SHUFFLE_ROWS) - Deterministic encryption (DETERMINISTIC_ENCRYPT);
+- Probabilistic encryption (ENCRYPT) - Decryption (DECRYPT) - Nulling out or deletion (DELETE) - Masking out (MASK_CUSTOM, _DATE, _DELIMITER, _RANGE);
+- Hashing (CRYPTOGRAPHIC_HASH).
+
+## Glue Workflows
+- Design multi-job, multi-crawler ETL processes run together;
+- Create from AWS Glue blueprint, from the console, or API;
+- This is only for orchestrating complex ETL operations using Glue.
+
+## Glue Workflow Triggers 
+- Triggers within workflows start jobs or crawlers;
+  - Or can be fired when jobs or crawlers complete;
+- Schedule;
+  - Based on a cron expression;
+- On demand;
+- EventBridge events;
+  - Start on single event or batch of events;
+  - For example, arrival of a new object in S3;
+    - Optional batch conditions - Batch size (number of events);
+    - Batch window (within X seconds, default is 15 min;
