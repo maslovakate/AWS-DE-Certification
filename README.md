@@ -2381,4 +2381,29 @@ df2 = df.resolveChoice(specs = [("myList[].price",
   - Start on single event or batch of events;
   - For example, arrival of a new object in S3;
     - Optional batch conditions - Batch size (number of events);
-    - Batch window (within X seconds, default is 15 min;
+    - Batch window (within X seconds, default is 15 min);
+
+## AWS Lake Formation 
+- “Makes it easy to set up a secure data lake in days”;
+- Loading data & monitoring data flows;
+- Setting up partitions;
+- Encryption & managing keys;
+- Defining transformation jobs & monitoring them;
+- Access control 
+- Auditing 
+- Built on top of Glue.
+
+## AWS Lake Formation
+![image](https://github.com/user-attachments/assets/bb3fc915-3a46-4d43-a106-b8cbc420ff13)
+
+## AWS Lake Formation: Pricing 
+- No cost for Lake Formation itself;
+- But underlying services incur charges:
+  - Glue; 
+  - S3;
+  - EMR;
+  - Athen;
+  - Redshift.
+
+## AWS Lake Formation: Building a Data Lake
+![image](https://github.com/user-attachments/assets/bc8ee14c-9672-480a-a030-98824fec144d)
