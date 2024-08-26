@@ -2206,3 +2206,83 @@ Table definitions and ETL.
   - Enabling job metrics can help you understand the maximum capacity in DPU’s you need;
 - Errors reported to CloudWatch:
   - Could tie into SNS for notification.
+
+## Glue ETL
+- Transform data, Clean Data, Enrich Data (before doing analysis);
+  - Generate ETL code in Python or Scala, you can modify the code;
+  - Can provide your own Spark or PySpark scripts;
+  - Target can be S3, JDBC (RDS, Redshift), or in Glue Data Catalog;
+- Fully managed, cost effective, pay only for the resources consumed;
+- Jobs are run on a serverless Spark platform;
+- Glue Scheduler to schedule the jobs;
+- Glue Triggers to automate job runs based on "events".
+
+## Glue ETL: The DynamicFrame
+- A DynamicFrame is a collection of DynamicRecords;
+- DynamicRecords are self-describing, have a schema;
+- Very much like a Spark DataFrame, but with more ETL stuff;
+- Scala and Python APIs.
+
+`val pushdownEvents = glueContext.getCatalogSource(
+database = "githubarchive_month", tableName = "data“)
+val projectedEvents = pushdownEvents.applyMapping(Seq(
+("id", "string", "id", "long"), ("type", "string", "type",
+"string"), ("actor.login", "string", "actor", "string"),
+("repo.name", "string", "repo", "string"),
+("payload.action", "string", "action", "string"),
+("org.login", "string", "org", "string"), ("year",
+"string", "year", "int"), ("month", "string", "month",
+"int"), ("day", "string", "day", "int") ))`
+
+## Glue ETL - Transformations
+- **Bundled Transformations**:
+  - DropFields, DropNullFields – remove (null) fields;
+  - Filter – specify a function to filter records;
+  - Join – to enrich data;
+  - Map - add fields, delete fields, perform external lookups ;
+- Machine Learning Transformations: 
+  - FindMatches ML: identify duplicate or matching records in your dataset, even when the records do not have a common unique identifier and no fields match exactly; 
+- Format conversions: CSV, JSON, Avro, Parquet, ORC, XML;
+- Apache Spark transformations (example: K-Means);
+  - Can convert between Spark DataFrame and Glue DynamicFram.
+
+## Glue ETL: ResolveChoice
+- Deals with ambiguities in a DynamicFrame and returns a new one;
+- For example, two fields with the same name;
+- make_cols: creates a new column for each type:
+  - price_double, price_string;
+- cast: casts all values to specified type;
+- make_struct: Creates a structure that contains each data type;
+- project: Projects every type to a given type, for example project:string.
+
+`"myList": [ { "price": 100.00 }, { "price": "$100.00" }]`
+`df1 = df.resolveChoice(choice = "make_cols") 
+df2 = df.resolveChoice(specs = [("myList[].price", 
+"make_struct"), ("columnA", "cast:double")])`
+
+## Glue ETL: Modifying the Data Catalog
+- ETL scripts can update your schema and partitions if necessary;
+- Adding new partitions:
+  - Re-run the crawler, or;
+  - Have the script use enableUpdateCatalog and partitionKeys options;
+- Updating table schema:
+  - Re-run the crawler, or;
+-   Use enableUpdateCatalog / updateBehavior from script;
+- Creating new tables:
+  - enableUpdateCatalog / updateBehavior with setCatalogInfo;
+- Restrictions:
+  - S3 only;
+  - Json, csv, avro, parquet only;
+  - Parquet requires special code;
+  - Nested schemas are not supported.
+
+## AWS Glue Development Endpoints
+- Develop ETL scripts using a notebook;
+  - Then create an ETL job that runs your script (using Spark and Glue);
+- Endpoint is in a VPC controlled by security groups, connect via:
+  - Apache Zeppelin on your local machine;
+  - Zeppelin notebook server on EC2 (via Glue console);
+  - SageMaker notebook;
+  - Terminal window;
+  - PyCharm professional edition;
+  - Use Elastic IP’s to access a private endpoint address.
