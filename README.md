@@ -2021,3 +2021,135 @@ Can use DynamoDB to keep track of what’s been loaded.Lambda can batch up new d
 
 # Containers
 Packaging applications in AWS
+
+## What is Docker?
+- Docker is a software development platform to deploy apps;
+- Apps are packaged in containers that can be run on any OS;
+  - Apps run the same, regardless of where they’re run ;
+  - Any machine;
+  - No compatibility issues;
+  - Predictable behavior;
+  - Less work;
+  - Easier to maintain and deploy;
+  - Works with any language, any OS, any technology;
+- **Use cases**: microservices architecture, lift-and-shift apps from on-premises to the AWS cloud.
+
+## Docker on an OS
+![image](https://github.com/user-attachments/assets/c012ba9b-b9b9-42a0-b4b0-03494a7e1a19)
+
+## Where are Docker images stored?
+- Docker images are stored in Docker Repositories;
+- Docker Hub (https://hub.docker.com);
+  - Public repository;
+  - Find base images for many technologies or OS (e.g., Ubuntu, MySQL, …);
+- Amazon ECR (Amazon Elastic Container Registry);
+  - Private repository;
+  - Public repository (Amazon ECR Public Gallery https://gallery.ecr.aws).
+
+## Docker vs. Virtual Machines
+- Docker is ”sort of” a virtualization technology, but not exactly;
+- Resources are shared with the host => many containers on one server.
+![image](https://github.com/user-attachments/assets/644c69db-4158-4fa7-9608-0d0d9bd6b3b9)
+
+## Getting Started with Docker
+![image](https://github.com/user-attachments/assets/27fa787a-bfab-404d-9930-1777bfb64302)
+
+## Docker Containers Management on AWS
+- Amazon Elastic Container Service (**Amazon ECS**);
+  - Amazon’s own container platform;
+- Amazon Elastic Kubernetes Service (**Amazon EKS**);
+  - Amazon’s managed Kubernetes (open source);
+- **AWS Fargate**:
+  - Amazon’s own Serverless container platform;
+  - Works with ECS and with EKS;
+- **Amazon ECR**:
+  - Store container images.
+
+## Amazon ECS - EC2 Launch Type
+- **ECS = Elastic Container Service**;
+- Launch Docker containers on AWS = Launch ECS Tasks on ECS Clusters;
+- **EC2 Launch Type: you must provision & maintain the infrastructure (the EC2 instances)**;
+- Each EC2 Instance must run the ECS Agent to register in the ECS Cluster;
+- AWS takes care of starting / stopping containers.
+
+## Amazon ECS – Fargate Launch Type
+- Launch Docker containers on AWS;
+- **You do not provision the infrastructure (no EC2 instances to manage)**;
+- **It’s all Serverless!**;
+- You just create task definitions;
+- AWS just runs ECS Tasks for you based on the CPU / RAM you need;
+- To scale, just increase the number of tasks. Simple - no more EC2 instances.
+
+## Amazon ECS – IAM Roles for ECS
+- EC2 Instance Profile (EC2 Launch Type only): 
+  - Used by the ECS agent;
+  - Makes API calls to ECS service;
+  - Send container logs to CloudWatch Logs;
+  - Pull Docker image from ECR;
+  - Reference sensitive data in Secrets Manager or SSM Parameter Store.
+- **ECS Task Role**:
+  - Allows each task to have a specific role;
+  - Use different roles for the different ECS Services you run;
+  - Task Role is defined in the **task definition**.
+![Untitled](https://github.com/user-attachments/assets/5e1a7e00-1ad7-40af-91b8-633f2c82a3f9)
+
+## Amazon ECS – Load Balancer Integrations
+- **Application Load Balancer** supported and works for most use cases;
+- **Network Load Balancer** recommended only for high throughput / high performance use cases, or to pair it with AWS Private Link;
+- **Classic Load Balancer** supported but not recommended (no advanced features – no Fargate);
+![image](https://github.com/user-attachments/assets/528f1982-d12b-4eb1-890b-5a7dce907f9b)
+
+## Amazon ECS – Data Volumes (EFS)
+- Mount EFS file systems onto ECS tasks;
+- Works for both EC2 and Fargate launch types;
+- Tasks running in any AZ will share the same data in the EFS file system;
+- **Fargate + EFS = Serverless**;
+- Use cases: persistent multi-AZ shared storage for your containers;
+- **Note: Amazon S3 cannot be mounted as a file system**.
+![image](https://github.com/user-attachments/assets/1d212c8d-47d0-45ba-8722-da3756cd0eb4)
+
+## Amazon ECR
+- **ECR = Elastic Container Registry**;
+- Store and manage Docker images on AWS;
+- Private and Public repository (Amazon ECR Public Gallery https://gallery.ecr.aws);
+- Fully integrated with ECS, backed by Amazon S3;
+- Access is controlled through IAM (permission errors => policy);
+- Supports image vulnerability scanning, versioning, image tags, image lifecycle.
+![image](https://github.com/user-attachments/assets/4ce0f1c3-1ea2-4594-9038-27f7afad93f5)
+
+## Amazon EKS Overview
+- Amazon EKS = Amazon Elastic Kubernetes Service;
+- It is a way to launch managed Kubernetes clusters on AWS;
+- Kubernetes is an open-source system for automatic deployment, scaling and management of containerized (usually Docker) application;
+- It’s an alternative to ECS, similar goal but different API;
+- EKS supports EC2 if you want to deploy worker nodes or Fargate to deploy serverless containers;
+- Use case: if your company is already using Kubernetes on-premises or in another cloud, and wants to migrate to AWS using Kubernetes;
+- **Kubernetes is cloud-agnostic (can be used in any cloud – Azure, GCP…)**;
+- For multiple regions, deploy one EKS cluster per region;
+- Collect logs and metrics using CloudWatch Container Insights.
+
+![image](https://github.com/user-attachments/assets/623e0e30-0f6b-4c43-a789-674be65ec781)
+
+## Amazon EKS – Node Types
+- **Managed Node Groups**;
+  - Creates and manages Nodes (EC2 instances) for you;
+  - Nodes are part of an ASG managed by EKS;
+  - Supports On-Demand or Spot Instances;
+- **Self-Managed Nodes**;
+  - Nodes created by you and registered to the EKS cluster and managed by an ASG;
+  - You can use prebuilt AMI - Amazon EKS Optimized AMI;
+  - Supports On-Demand or Spot Instances;
+- **AWS Fargate**;
+  - No maintenance required; no nodes manage.
+
+## Amazon EKS – Data Volumes 
+- Need to specify **StorageClass** manifest on your EKS cluster;
+- Leverages a **Container Storage Interface (CSI)** compliant driver;
+- Support for:
+  - Amazon EBS;
+  - Amazon EFS (works with Fargate);
+  - Amazon FSx for Lustre;
+  - Amazon FSx for NetApp ONTAP.
+
+# Analytics
+________________________________________________________________________________________________________________________________________________________________________________________________________
