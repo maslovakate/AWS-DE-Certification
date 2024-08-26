@@ -1474,7 +1474,7 @@ Fully managed graph database
   - Entire table is copied to every node
 ![image](https://github.com/user-attachments/assets/22bcfe42-4602-479d-9064-9a8a84228d0f)
 
-## Importing / Exporting data • 
+## Importing / Exporting data - 
 - `COPY` command;
   - Parallelized; efficient
   - From S3, EMR, DynamoDB, remote hosts
@@ -2150,6 +2150,59 @@ Packaging applications in AWS
   - Amazon EFS (works with Fargate);
   - Amazon FSx for Lustre;
   - Amazon FSx for NetApp ONTAP.
+________________________________________________________________________________________________________________________________________________________________________________________________________
 
 # Analytics
-________________________________________________________________________________________________________________________________________________________________________________________________________
+
+# AWS Glue 
+Table definitions and ETL.
+
+## What is Glue? 
+- Serverless discovery and definition of table definitions and schema:
+  - S3 “data lakes”;
+  - RDS;
+  - Redshift;
+  - DynamoDB;
+  - Most other SQL databases.
+- Custom ETL jobs:
+  - Trigger-driven, on a schedule, or on demand;
+  - Fully managed.
+
+## Glue Crawler / Data Catalog
+- Glue crawler scans data in S3, creates schema;
+- Can run periodically;
+- Populates the Glue Data Catalog:
+  - Stores only table definition;
+  - Original data stays in S3;
+- Once cataloged, you can treat your unstructured data like it’s structured:
+  - Redshift Spectrum;
+  - Athena;
+  - EMR;
+  - Quicksigh.
+![image](https://github.com/user-attachments/assets/712648d5-5d47-43f5-9af6-fb8d41c1ada0)
+
+## Glue and S3 Partitions
+- Glue crawler will extract partitions based on how your S3 data is organized
+- Think up front about how you will be querying your data lake in S3
+- Example: devices send sensor data every hour
+- Do you query primarily by time ranges?
+  - If so, organize your buckets as yyyy/mm/dd/device
+- Do you query primarily by device?
+  - If so, organize your buckets as device/yyyy/mm/dd
+
+## Glue + Hive
+- Hive lets you run SQL-like queries from EMR;
+- The Glue Data Catalog can serve as a Hive “metastore”;
+- You can also import a Hive metastore into Glue.
+
+## Glue ETL
+- Automatic code generation;
+- Scala or Python;
+- Encryption:
+  - Server-side (at rest);
+  - SSL (in transit);
+- Can be event-driven;
+- Can provision additional “DPU’s” (data processing units) to increase performance of underlying Spark jobs;
+  - Enabling job metrics can help you understand the maximum capacity in DPU’s you need;
+- Errors reported to CloudWatch:
+  - Could tie into SNS for notification.
