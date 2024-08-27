@@ -2407,3 +2407,35 @@ df2 = df.resolveChoice(specs = [("myList[].price",
 
 ## AWS Lake Formation: Building a Data Lake
 ![image](https://github.com/user-attachments/assets/bc8ee14c-9672-480a-a030-98824fec144d)
+
+## AWS Lake Formation: The Finer Points
+- Cross-account Lake Formation permission;
+  - Recipient must be set up as a data lake administrator;
+  - Can use AWS Resource Access Manager for accounts external to your organization;
+  - IAM permissions for cross-account access;
+- Lake Formation does not support manifests in Athena or Redshift queries;
+- IAM permissions on the KMS encryption key are needed for encrypted data catalogs in Lake Formation;
+- IAM permissions needed to create blueprints and workflows.
+
+## AWS Lake Formation: Governed Tables and Security
+- Now supports “Governed Tables” that support ACID transactions across multiple tables;
+  - New type of S3 table;
+  - Can’t change choice of governed afterwards;
+  - Works with streaming data too (Kinesis);
+  - Can query with Athena;
+- Storage Optimization with Automatic Compaction;
+- Granular Access Control with Row and CellLevel Security;
+  - Both for governed and S3 tables;
+- Above features incur additional charges based on usage.
+
+## Data Permissions in Lake Formation
+- Can tie to IAM users/roles, SAML, or external AWS accounts;
+- Can use policy tags on databases, tables, or columns;
+- Can select specific permissions for tables or columns.
+
+## Data Filters in Lake Formation
+- Column, row, or cell-level security - Apply when granting SELECT permission on tables;
+- “All columns” + row filter = row-level security;
+- “All rows” + specific columns = column-level security;
+- Specific columns + specific rows = cell-level security;
+- Create filters via the console (seen here) or via `CreateDataCellsFilter` API.
